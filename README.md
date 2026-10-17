@@ -1,8 +1,12 @@
 # FIPU Online Vodič
 
-Interaktivni web vodič za online izvanredni studij Informatike na Fakultetu informatike u Puli (FIPU). Izgrađen prema "Academic Cyber-Campus" design sustavu — četiri tematska modula s potpuno reaktivnim UI komponentama.
+Interaktivni web vodič za online izvanredni sveučilišni studij Informatike na Fakultetu informatike u Puli (FIPU). Sadrži četiri tematska modula s potpuno reaktivnim UI komponentama.
 
-## Pokretanje
+Dostupno na: **fipu.unipu.hr** (ili vlastitoj Netlify domeni)
+
+---
+
+## Lokalno pokretanje
 
 ```bash
 # Instalacija ovisnosti (samo prvi put)
@@ -18,6 +22,34 @@ npm run build
 npm run preview
 ```
 
+---
+
+## Deploy na Netlify
+
+### Opcija A — automatski (preporučeno)
+
+1. Push repozitorij na GitHub
+2. Na [netlify.com](https://netlify.com) → **Add new site → Import from Git**
+3. Odaberi repozitorij
+4. Postavi:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+5. Klikni **Deploy site**
+
+Svaki push na `main` automatski deploya novu verziju.
+
+### Opcija B — ručni deploy (drag & drop)
+
+```bash
+npm run build
+```
+
+Zatim na Netlify dashboardu → **Sites → Deploy manually** → povuci `dist/` mapu u preglednik.
+
+> **Napomena:** Datoteka `public/_redirects` već je uključena u projekt i osigurava ispravan SPA routing (bez 404 na osvježavanje stranice).
+
+---
+
 ## Tech stack
 
 | Tehnologija | Verzija | Uloga |
@@ -25,76 +57,77 @@ npm run preview
 | [Vite](https://vitejs.dev/) | 5.x | Build tool / dev server |
 | [React](https://react.dev/) | 18.x | UI framework |
 | [Tailwind CSS](https://tailwindcss.com/) | 3.4.x | Utility-first CSS s custom design tokenima |
-| [PostCSS](https://postcss.org/) + Autoprefixer | — | CSS pipeline |
-| [Framer Motion](https://www.framer.com/motion/) | 12.x | Animacije prijelaza između pogleda |
+| [Framer Motion](https://www.framer.com/motion/) | 14.x | Animacije prijelaza između pogleda |
 | Google Material Symbols Outlined | — | Ikonografija (icon font) |
 | Plus Jakarta Sans + Inter | — | Tipografija (Google Fonts) |
+
+---
 
 ## Struktura projekta
 
 ```
 vodic-online/
 ├── public/
+│   ├── favicon.svg
+│   ├── _redirects                  # Netlify SPA routing
+│   ├── docs/
+│   │   └── fipu-vodic-online.pdf
 │   └── images/
+│       ├── fipu-hr.png             # Logo FIPU
+│       ├── fipu-demo-kolegij.png   # Screenshot demo kolegija
 │       ├── hero-student-sea.jpg
-│       ├── campus-aerial.jpg
-│       ├── techstack.jpg
 │       ├── study-writing.jpg
-│       ├── ...
-│       └── journeys/
-│           ├── journey-upis.jpg
-│           ├── journey-studiranje.jpg
-│           ├── journey-ispiti.jpg
-│           ├── journey-problemi.jpg
-│           └── journey-iskustvo.jpg
+│       ├── techstack.jpg
+│       ├── journeys/               # Procesni dijagrami (tabovi Hodogram)
+│       └── photos/
 ├── src/
 │   ├── components/
-│   │   ├── TopNav.jsx           # Fiksna navigacijska traka s 4 pogleda
+│   │   ├── TopNav.jsx              # Fiksna navigacijska traka
+│   │   ├── DemoBadge.jsx           # Plutajući badge — ogledni kolegij
+│   │   ├── ContactFooter.jsx       # Kontaktni blok (na dnu zadnje stranice)
+│   │   ├── NextPageBlock.jsx       # Navigacijski CTA prema sljedećoj stranici
 │   │   └── modules/
-│   │       ├── HomeModule.jsx       # Početna & O studiju
-│   │       ├── NastavaModule.jsx    # Nastava, IPN & Alati
-│   │       ├── PutovanjeModule.jsx  # Putovanje studenta (tabovi + lightbox)
+│   │       ├── HomeModule.jsx       # O online studiju
+│   │       ├── PutovanjeModule.jsx  # Hodogram studija (tabovi + lightbox)
+│   │       ├── NastavaModule.jsx    # Organizacija nastave, IPN & Alati
 │   │       └── KvizModule.jsx       # Samoprocjena & FAQ
-│   ├── App.jsx       # Root — AnimatePresence + routing po pogledima
+│   ├── data/
+│   │   ├── programs.js
+│   │   └── content.js
+│   ├── App.jsx        # Root — view routing + scroll to top
 │   ├── main.jsx
-│   └── index.css     # @tailwind directives + custom CSS za app shell i TopNav
-├── tailwind.config.js   # Design tokeni: boje, spacing, tipografija
+│   └── index.css      # @tailwind directives + custom CSS (app shell, TopNav)
+├── tailwind.config.js  # Design tokeni: boje, spacing, tipografija
 ├── postcss.config.js
 ├── vite.config.js
 └── package.json
 ```
 
-## Arhitektura — 4 pogleda
+---
 
-| Pogled | Modul | Interaktivnost |
-|--------|-------|----------------|
-| `home` | `HomeModule` | CTA gumbi za navigaciju, bento grid, usporedna tablica |
-| `nastava` | `NastavaModule` | Simulator ocjene — 3 klizača (useState), live ECTS kalkulator |
-| `putovanje` | `PutovanjeModule` | 4-tab navigator (upis/studiranje/ispiti/referada), lightbox modal s Escape/backdrop zatvaranjem |
-| `kviz` | `KvizModule` | 3-tab kontrolna lista s progress barom, 8-pitanjski kviz (state machine), accordion FAQ s filtrom pretrage |
+## Četiri modula
 
-## Design sustav — Academic Cyber-Campus
+| Modul | Navigacija | Opis |
+|-------|------------|------|
+| `HomeModule` | O online studiju | Hero sekcija, stats bar, prednosti online učenja, usporedna tablica, CTA prema Hodogramu |
+| `PutovanjeModule` | Hodogram studija | 4-tab navigator (Upis / Studij & Učenje / Ispiti / Referada), lightbox za procesne dijagrame |
+| `NastavaModule` | Organizacija nastave | IPN tablica, ECTS kalkulator (3 klizača), ponašanje na nastavi, alati i platforma |
+| `KvizModule` | Samoprocjena | 3-tab kontrolna lista (Hardver / Softver / Navike), 8-pitanjski kviz, accordion FAQ s pretragom |
 
-Tailwind v3 konfiguracija replicira sve tokene iz stitch dizajna:
+---
 
-- **Boje:** `forest-dark #0A7A52`, `surface-mint #E0F6EE`, `fipu-cyan #59BCD8`, `primary-container #0e1c2f`, `unipu-blue #1A6BBF`
-- **Tipografija:** `Plus Jakarta Sans` (naslovi/bedževi), `Inter` (tijelo/labeli/kod)
-- **Fontovi kao Tailwind klase:** `font-headline-lg`, `text-body-md`, `text-badge-caps` itd.
-- **Spacing:** `space-xs` → `space-xl`, `margin`, `gutter`
+## Design sustav
 
-## Deploy na Netlify
+Tailwind v3 konfiguracija s custom tokenima:
 
-1. Push na GitHub:
-   ```bash
-   git remote add origin <github-url>
-   git push -u origin main
-   ```
-2. Na [netlify.com](https://netlify.com) → **Add new site → Import from Git**
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Svaki push na `main` automatski deploya novu verziju.
+- **Primarne boje:** `primary-container #0A1628` (tamna pozadina), `forest-dark #0A7A52` (zelena akcija), `fipu-cyan #59BCD8`, `unipu-blue #1A6BBF`, `surface-mint #E0F6EE`
+- **Tipografija:** `Plus Jakarta Sans` (naslovi, bedževi), `Inter` (tijelo, labeli, kod)
+- **Fontovi kao Tailwind klase:** `font-display-hero`, `font-headline-lg`, `font-body-md`, `font-badge-caps` itd.
+- **Spacing:** `space-xs` → `space-xl`, `margin`, `section-px`
+
+---
 
 ## Autor
 
-Prof. dr. sc. Darko Etinger, Dekan FIPU Pula  
-[fipu.unipu.hr](https://fipu.unipu.hr)
+Prof. dr. sc. Darko Etinger, Dekan FIPU Pula
+[fipu.unipu.hr](https://fipu.unipu.hr) · fipu-ured@unipu.hr

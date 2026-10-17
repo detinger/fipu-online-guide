@@ -109,6 +109,7 @@ h1, h2, h3, h4, h5,
 }
 .top-nav-main {
   height: 64px; padding: 0 var(--section-px);
+  padding-right: 148px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .nav-brand {
@@ -117,12 +118,9 @@ h1, h2, h3, h4, h5,
   text-decoration: none;
 }
 .nav-brand-logo {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--navy);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--fipu-cyan);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.1rem; font-weight: 800; flex-shrink: 0;
+  height: 44px; width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .nav-brand-text { display: flex; flex-direction: column; line-height: 1.2; }
 .nav-brand-name {

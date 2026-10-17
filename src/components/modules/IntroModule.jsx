@@ -44,10 +44,6 @@ export default function IntroModule({ onNavigate }) {
       <section className="module-hero">
         <div className="hero-inner">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="hero-badge">
-              <span>🏆</span>
-              <span>Prekretnica 2. studenoga 2022. • Prvi u Republici Hrvatskoj</span>
-            </div>
             <h1 className="hero-title">
               Online sveučilišni studij <span className="accent">Informatike</span> na FIPU
             </h1>
@@ -64,19 +60,19 @@ export default function IntroModule({ onNavigate }) {
             </div>
             <div className="hero-metrics">
               <div className="hero-metric">
-                <div className="hero-metric-label">Režim rada</div>
+                <div className="hero-metric-label">Modalitet studiranja</div>
                 <div className="hero-metric-value">Self-paced</div>
                 <div className="hero-metric-desc">Vlastiti tempo učenja</div>
               </div>
               <div className="hero-metric">
                 <div className="hero-metric-label">ECTS bodovi</div>
                 <div className="hero-metric-value">180 + 120</div>
-                <div className="hero-metric-desc">Preddiplomski + diplomski</div>
+                <div className="hero-metric-desc">Prijediplomski + diplomski</div>
               </div>
               <div className="hero-metric">
                 <div className="hero-metric-label">Akreditacija</div>
                 <div className="hero-metric-value">#1</div>
-                <div className="hero-metric-desc">Sveučilišni online studij inf. u RH</div>
+                <div className="hero-metric-desc">Sveučilišni izvanredni online studij u HR</div>
               </div>
             </div>
           </motion.div>
@@ -94,15 +90,11 @@ export default function IntroModule({ onNavigate }) {
                   <span style={{ display: 'inline-block', padding: '2px 9px', background: 'var(--fipu-cyan)', color: 'var(--navy)', fontSize: '0.62rem', fontWeight: 800, borderRadius: 4, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 5 }}>
                     Virtualni Kampus
                   </span>
-                  <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', margin: 0 }}>Green Room · Merlin LMS</p>
+                  <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', margin: 0 }}>Merlin LMS i Google for Education Plus</p>
                 </div>
               </div>
             </div>
             <div style={{ marginTop: 12, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-              <div style={{ background: 'rgba(216,227,251,0.1)', padding: '10px 12px', borderRadius: 9, display: 'flex', alignItems: 'center', gap: 7 }}>
-                <span style={{ fontSize: '0.9rem' }}>✅</span>
-                <span style={{ fontSize: '0.73rem', color: 'var(--inverse-primary)' }}>NVVO akreditacija</span>
-              </div>
               <div style={{ background: 'rgba(216,227,251,0.1)', padding: '10px 12px', borderRadius: 9, display: 'flex', alignItems: 'center', gap: 7 }}>
                 <span style={{ fontSize: '0.9rem' }}>🎬</span>
                 <span style={{ fontSize: '0.73rem', color: 'var(--inverse-primary)' }}>Asinkroni video moduli</span>

@@ -37,7 +37,7 @@ export default function ModuleHeader({ tag, title, accentWord, subtitle, image, 
                     <span style={{ display: 'inline-block', padding: '2px 9px', background: 'var(--fipu-cyan)', color: 'var(--navy)', fontSize: '0.65rem', fontWeight: 800, borderRadius: 4, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4 }}>
                       Virtualni Kampus
                     </span>
-                    <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', margin: 0 }}>Merlin LMS · Google Workspace</p>
+                    <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', margin: 0 }}>Merlin LMS · Google for Education Plus</p>
                   </div>
                 </div>
               </div>

@@ -1,8 +1,8 @@
 const NAV_ITEMS = [
-  { id: 'home',      label: 'Početna & O studiju' },
-  { id: 'putovanje', label: 'Putovanje studenta' },
-  { id: 'nastava',   label: 'Nastava & Alati' },
-  { id: 'kviz',      label: 'Samoprocjena & Kviz' },
+  { id: 'home',      label: 'O online studiju' },
+  { id: 'putovanje', label: 'Hodogram studija' },
+  { id: 'nastava',   label: 'Organizacija nastave' },
+  { id: 'kviz',      label: 'Samoprocjena' },
 ]
 
 export default function TopNav({ active, onNavigate }) {
@@ -14,29 +14,10 @@ export default function TopNav({ active, onNavigate }) {
           <span>📞 +385 52 877 438</span>
           <span>✉️ fipu-ured@unipu.hr</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span className="nav-topbar-badge">Akreditirani Online Studij</span>
-          <a href="https://moodle.srce.hr/" target="_blank" rel="noreferrer"
-             style={{ color: 'var(--on-surface-variant)', fontSize: '0.76rem' }}>
-            Merlin LMS
-          </a>
-          <span style={{ color: 'var(--outline-variant)' }}>•</span>
-          <a href="https://www.isvu.hr/studomat/" target="_blank" rel="noreferrer"
-             style={{ color: 'var(--on-surface-variant)', fontSize: '0.76rem' }}>
-            Studomat
-          </a>
-        </div>
       </div>
       <div className="top-nav-main">
         <button className="nav-brand" onClick={() => onNavigate('home')}>
-          <div className="nav-brand-logo">F</div>
-          <div className="nav-brand-text">
-            <span className="nav-brand-name">
-              FIPU
-              <span className="nav-brand-badge">Online</span>
-            </span>
-            <span className="nav-brand-sub">Studij Informatike</span>
-          </div>
+          <img src="/images/fipu-hr.png" alt="FIPU" className="nav-brand-logo" />
         </button>
 
         <nav className="nav-pill-container">
@@ -51,9 +32,6 @@ export default function TopNav({ active, onNavigate }) {
           ))}
         </nav>
 
-        <button className="nav-cta" onClick={() => onNavigate('kviz')}>
-          Provjeri spremnost →
-        </button>
       </div>
     </header>
   )

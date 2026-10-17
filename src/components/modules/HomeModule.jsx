@@ -1,3 +1,5 @@
+import NextPageBlock from '../NextPageBlock'
+
 export default function HomeModule({ onNavigate }) {
   return (
     <div className="flex flex-col w-full">
@@ -9,48 +11,28 @@ export default function HomeModule({ onNavigate }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
             {/* Hero Text & Metrics */}
             <div className="lg:col-span-7 flex flex-col space-y-space-md">
-              <div className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-mint/15 text-secondary-fixed max-w-fit shadow-sm">
-                <span className="material-symbols-outlined text-[18px] text-secondary-fixed">emoji_events</span>
-                <span className="font-badge-caps text-badge-caps uppercase tracking-wider">Prekretnica 2. studenoga 2022. • Prvi u Republici Hrvatskoj</span>
-              </div>
               <h1 className="font-display-hero text-display-hero text-on-primary tracking-tight leading-tight">
                 Online sveučilišni studij <span className="text-fipu-cyan">Informatike</span> na FIPU
               </h1>
               <p className="font-body-lg text-body-lg text-inverse-primary max-w-2xl leading-relaxed">
                 Akreditirani sveučilišni program Sveučilišta Jurja Dobrile u Puli krojen za novu generaciju softverskih inženjera, zaposlene profesionalce i studente na daljinu. Vrhunski standardi mentorstva, fleksibilan tempo i cjelovita digitalna podrška.
               </p>
-              <div className="flex flex-wrap items-center gap-space-md pt-space-xs">
-                <button
-                  onClick={() => onNavigate('kviz')}
-                  className="inline-flex items-center gap-space-xs px-space-lg py-3 rounded-full bg-emerald-accent text-on-primary hover:bg-forest-dark font-label-lg text-label-lg transition-all shadow-lg shadow-emerald-accent/20 border-none cursor-pointer"
-                >
-                  <span>Riješi upitnik spremnosti</span>
-                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-                </button>
-                <button
-                  onClick={() => onNavigate('nastava')}
-                  className="inline-flex items-center gap-space-xs px-space-lg py-3 rounded-full bg-surface-container-highest/20 text-on-primary hover:bg-surface-container-highest/30 font-label-lg text-label-lg transition-colors border-none cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-[20px] text-fipu-cyan">terminal</span>
-                  <span>Metodologija i Alati</span>
-                </button>
-              </div>
               {/* Hero Metrics Bento */}
               <div className="grid grid-cols-3 gap-space-sm pt-space-md">
                 <div className="p-space-md rounded-xl bg-surface-container-highest/10 backdrop-blur-md shadow-sm">
-                  <span className="font-badge-caps text-badge-caps text-secondary-fixed uppercase">Režim rada</span>
+                  <span className="font-badge-caps text-badge-caps text-secondary-fixed uppercase">Modalitet studiranja</span>
                   <p className="font-headline-md text-headline-md text-on-primary mt-1">Self-paced</p>
                   <p className="font-body-sm text-body-sm text-surface-variant/80">Vlastiti tempo učenja i mentorska podrška</p>
                 </div>
                 <div className="p-space-md rounded-xl bg-surface-container-highest/10 backdrop-blur-md shadow-sm">
                   <span className="font-badge-caps text-badge-caps text-fipu-cyan uppercase">ECTS bodovi</span>
                   <p className="font-headline-md text-headline-md text-on-primary mt-1">180 + 120</p>
-                  <p className="font-body-sm text-body-sm text-surface-variant/80">Preddiplomski + diplomski stupanj</p>
+                  <p className="font-body-sm text-body-sm text-surface-variant/80">Prijediplomski + diplomski stupanj</p>
                 </div>
                 <div className="p-space-md rounded-xl bg-surface-container-highest/10 backdrop-blur-md shadow-sm">
                   <span className="font-badge-caps text-badge-caps text-secondary-fixed uppercase">Akreditacija</span>
                   <p className="font-headline-md text-headline-md text-on-primary mt-1">#1</p>
-                  <p className="font-body-sm text-body-sm text-surface-variant/80">Sveučilišni online studij inf. u RH</p>
+                  <p className="font-body-sm text-body-sm text-surface-variant/80">Sveučilišni izvanredni online studij u HR</p>
                 </div>
               </div>
             </div>
@@ -65,25 +47,9 @@ export default function HomeModule({ onNavigate }) {
                     style={{ objectPosition: 'center 25%' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-container/90 via-primary-container/20 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <div>
-                      <span className="inline-block px-space-xs py-0.5 rounded bg-fipu-cyan text-primary-container font-badge-caps text-badge-caps uppercase">Virtualni Kampus</span>
-                      <p className="font-title-card text-title-card text-on-primary mt-0.5">Green Room &amp; Merlin LMS</p>
-                    </div>
-                    <div className="w-10 h-10 rounded-full bg-surface-mint text-forest-dark flex items-center justify-center font-label-md">
-                      <span className="material-symbols-outlined text-[20px]">play_circle</span>
-                    </div>
-                  </div>
-                </div>
-                {/* Mini stats row */}
-                <div className="mt-space-md grid grid-cols-2 gap-space-sm font-body-sm text-body-sm text-surface-variant">
-                  <div className="flex items-center gap-space-xs bg-surface-container-highest/10 p-space-sm rounded-lg">
-                    <span className="material-symbols-outlined text-secondary-fixed text-[18px]">verified_user</span>
-                    <span>NVVO akreditacija</span>
-                  </div>
-                  <div className="flex items-center gap-space-xs bg-surface-container-highest/10 p-space-sm rounded-lg">
-                    <span className="material-symbols-outlined text-fipu-cyan text-[18px]">video_camera_front</span>
-                    <span>Asinkroni video moduli</span>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="inline-block px-space-xs py-0.5 rounded bg-fipu-cyan text-primary-container font-badge-caps text-badge-caps uppercase">Potpuno online</span>
+                    <p className="font-title-card text-title-card text-on-primary mt-0.5">Merlin LMS i Google for Education Plus</p>
                   </div>
                 </div>
               </div>
@@ -101,8 +67,8 @@ export default function HomeModule({ onNavigate }) {
                 <span className="material-symbols-outlined text-[24px]">school</span>
               </div>
               <div>
-                <p className="font-title-card text-title-card text-on-surface">3 godine (180 ECTS)</p>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">Preddiplomski studij</p>
+                <p className="font-title-card text-title-card text-on-surface">3 god. · 180 ECTS</p>
+                <p className="font-body-sm text-body-sm text-on-surface-variant">Prijediplomski · univ. bacc. inf.</p>
               </div>
             </div>
             <div className="flex items-center gap-space-sm p-space-sm bg-surface-container-lowest rounded-xl shadow-sm">
@@ -110,8 +76,8 @@ export default function HomeModule({ onNavigate }) {
                 <span className="material-symbols-outlined text-[24px]">workspace_premium</span>
               </div>
               <div>
-                <p className="font-title-card text-title-card text-on-surface">univ. bacc. inf.</p>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">Sveučilišni akademski naziv</p>
+                <p className="font-title-card text-title-card text-on-surface">2 god. · 120 ECTS</p>
+                <p className="font-body-sm text-body-sm text-on-surface-variant">Diplomski · mag. inf.</p>
               </div>
             </div>
             <div className="flex items-center gap-space-sm p-space-sm bg-surface-container-lowest rounded-xl shadow-sm">
@@ -128,8 +94,8 @@ export default function HomeModule({ onNavigate }) {
                 <span className="material-symbols-outlined text-[24px]">public</span>
               </div>
               <div>
-                <p className="font-title-card text-title-card text-on-surface">Dijaspora i regija</p>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">Studij s bilo koje lokacije</p>
+                <p className="font-title-card text-title-card text-on-surface">Studij na daljinu</p>
+                <p className="font-body-sm text-body-sm text-on-surface-variant">HR, dijaspora i inozemstvo</p>
               </div>
             </div>
           </div>
@@ -141,20 +107,12 @@ export default function HomeModule({ onNavigate }) {
         <div className="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-space-lg">
             <div className="space-y-space-xs">
-              <div className="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-mint text-forest-dark font-badge-caps text-badge-caps uppercase">
-                <span>Metodologija • E-učenje</span>
-              </div>
               <h2 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">
                 💡 Prednosti online učenja na FIPU
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
                 Inovativan model visokoškolskog obrazovanja koji spaja akademsku strogost i fleksibilnost suvremenog softverskog razvoja.
               </p>
-            </div>
-            <div className="mt-4 md:mt-0">
-              <span className="font-code-inline text-code-inline text-on-surface-variant px-space-md py-space-xs rounded-full bg-surface-container-low inline-block">
-                Standard: CARNET e-Sveučilišta
-              </span>
             </div>
           </div>
           {/* Bento Cards Grid for 5 Benefits */}
@@ -177,10 +135,6 @@ export default function HomeModule({ onNavigate }) {
                   Online studij na FIPU nije pasivno čitanje PDF-ova. Kroz Merlin LMS, strukturirane tjedne forume, žive konzultacije preko video linka i mentorske sesije u malim grupama, student je u permanentnom dijalogu s nastavnim osobljem i kolegama inženjerima.
                 </p>
               </div>
-              <div className="pt-space-md flex items-center justify-between">
-                <span className="font-label-md text-label-md text-forest-dark font-semibold">Tjedni feedback i evaluacija zadataka</span>
-                <span className="material-symbols-outlined text-forest-dark text-[22px]">check_circle</span>
-              </div>
             </div>
             {/* Benefit 2 */}
             <div className="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
@@ -188,7 +142,7 @@ export default function HomeModule({ onNavigate }) {
                 <div className="w-12 h-12 rounded-xl bg-surface-container-high text-unipu-blue flex items-center justify-center mb-space-md">
                   <span className="material-symbols-outlined text-[28px]">code</span>
                 </div>
-                <span className="font-badge-caps text-badge-caps uppercase text-unipu-blue font-bold">Hands-on Inženjerstvo</span>
+                <span className="font-badge-caps text-badge-caps uppercase text-unipu-blue font-bold">Hands-on Pristup</span>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface mt-space-xs mb-space-xs">
                   Individualno stjecanje vještina za digitalno doba
                 </h3>
@@ -291,7 +245,7 @@ export default function HomeModule({ onNavigate }) {
                 <thead>
                   <tr className="bg-surface-container text-on-surface">
                     <th className="p-space-md font-badge-caps text-badge-caps uppercase text-forest-dark">Kriterij usporedbe</th>
-                    <th className="p-space-md font-title-card text-title-card text-on-surface">Redovni studij (Klasični / Online)</th>
+                    <th className="p-space-md font-title-card text-title-card text-on-surface">Redovni studij</th>
                     <th className="p-space-md font-title-card text-title-card text-forest-dark bg-surface-mint/60">Izvanredni online studij</th>
                   </tr>
                 </thead>
@@ -334,12 +288,9 @@ export default function HomeModule({ onNavigate }) {
                 </div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Green Room Studio FIPU</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant">
-                  Fakultet informatike u Puli investirao je u vlastiti profesionalni video studio s tehnologijom virtualnog chroma-keyinga. Predavanja se snimaju u televizijskoj kvaliteti s interaktivnim vizualizacijama programskog koda.
+                  Kolegiji se isporučuju kroz profesionalne video lekcije, interaktivne vizualizacije programskog koda i custom aplikacije za učenje razvijene posebno za ovaj studij.
                 </p>
               </div>
-              <span className="font-code-inline text-code-inline text-forest-dark pt-space-sm font-semibold">
-                Snimanje lekcija u 4K rezoluciji
-              </span>
             </div>
             <div className="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
               <div className="space-y-space-xs">
@@ -351,9 +302,6 @@ export default function HomeModule({ onNavigate }) {
                   FIPU aktivno sudjeluje u nacionalnom projektu digitalne transformacije visokog obrazovanja. Svi kolegiji prolaze stroge pedagoške i tehničke recenzije za e-učenje.
                 </p>
               </div>
-              <span className="font-code-inline text-code-inline text-unipu-blue pt-space-sm font-semibold">
-                Akreditirano od strane NVVO
-              </span>
             </div>
             <div className="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
               <div className="space-y-space-xs">
@@ -365,9 +313,6 @@ export default function HomeModule({ onNavigate }) {
                   Povezati Istru i cijelu Hrvatsku s globalnim IT tržištem rada. FIPU priprema programere, data inženjere i voditelje projekata kroz agilne kolegije temeljene na suvremenim tehnologijama.
                 </p>
               </div>
-              <span className="font-code-inline text-code-inline text-on-surface pt-space-sm font-semibold">
-                Partnerstvo s tehnološkim sektorom
-              </span>
             </div>
           </div>
         </div>
@@ -391,7 +336,7 @@ export default function HomeModule({ onNavigate }) {
             <div className="mt-4 md:mt-0">
               <span className="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-space-xs">
                 <span className="material-symbols-outlined text-[18px] text-forest-dark">pin_drop</span>
-                Rovinjska 14, 52100 Pula
+                Ulica Alda Negrija 6, 52100 Pula
               </span>
             </div>
           </div>
@@ -411,150 +356,20 @@ export default function HomeModule({ onNavigate }) {
               <div className="absolute bottom-6 left-6 right-6">
                 <span className="px-space-xs py-0.5 rounded bg-fipu-cyan text-primary-container font-badge-caps text-badge-caps uppercase">Okruženje</span>
                 <h3 className="font-headline-md text-headline-md text-on-primary mt-1">Pula i mediteranska obala</h3>
-                <p className="font-body-sm text-body-sm text-surface-variant mt-0.5">Savršena sinergija inspirativne prirode, IT konferencija i akademske izvrsnosti.</p>
+                <p className="font-body-sm text-body-sm text-surface-variant mt-0.5">Savršena sinergija inspirativne prirode i akademske izvrsnosti.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* QUICK ACTION CTA HUB */}
-      <section className="w-full py-space-xl bg-surface-container-low">
-        <div className="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
-          <div className="text-center max-w-2xl mx-auto mb-space-lg">
-            <h2 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">
-              Sve što trebate za početak
-            </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant mt-space-xs">
-              Odaberite modul i saznajte točne korake upisa, tehničku opremu ili provjerite svoju spremnost za samostalno učenje.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
-            <div className="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className="space-y-space-sm">
-                <div className="w-12 h-12 rounded-xl bg-surface-mint text-forest-dark flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[26px]">route</span>
-                </div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface group-hover:text-forest-dark transition-colors">
-                  Putovanje studenta
-                </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant">
-                  Od online prijave na Postani-student, potvrde upisa, uvodnog orijentacijskog tjedna do obrane završnog rada.
-                </p>
-              </div>
-              <div className="pt-space-md">
-                <button
-                  onClick={() => onNavigate('putovanje')}
-                  className="inline-flex items-center gap-space-xs font-label-lg text-label-lg text-forest-dark font-bold hover:underline bg-transparent border-none cursor-pointer p-0"
-                >
-                  <span>Pregledaj hodogram</span>
-                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
-              </div>
-            </div>
-            <div className="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className="space-y-space-sm">
-                <div className="w-12 h-12 rounded-xl bg-surface-container-high text-unipu-blue flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[26px]">memory</span>
-                </div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface group-hover:text-unipu-blue transition-colors">
-                  Nastava, Alati i Oprema
-                </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant">
-                  Minimalna i preporučena hardverska konfiguracija, pristup sustavima Merlin, MS Teams i Git laboratorijima.
-                </p>
-              </div>
-              <div className="pt-space-md">
-                <button
-                  onClick={() => onNavigate('nastava')}
-                  className="inline-flex items-center gap-space-xs font-label-lg text-label-lg text-unipu-blue font-bold hover:underline bg-transparent border-none cursor-pointer p-0"
-                >
-                  <span>Tehničke specifikacije</span>
-                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
-              </div>
-            </div>
-            <div className="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className="space-y-space-sm">
-                <div className="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[26px]">quiz</span>
-                </div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface group-hover:text-forest-dark transition-colors">
-                  Kviz samoprocjene
-                </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant">
-                  Kratak interaktivni upitnik od 8 pitanja koji procjenjuje je li asinkroni online model idealan za vaše navike.
-                </p>
-              </div>
-              <div className="pt-space-md">
-                <button
-                  onClick={() => onNavigate('kviz')}
-                  className="inline-flex items-center gap-space-xs font-label-lg text-label-lg text-forest-dark font-bold hover:underline bg-transparent border-none cursor-pointer p-0"
-                >
-                  <span>Pokreni brzi kviz</span>
-                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* OFFICIAL FACULTY CONTACT & SUPPORT BANNER */}
-      <section className="w-full py-space-xl bg-surface">
-        <div className="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
-          <div className="rounded-3xl bg-primary-container text-on-primary p-space-lg md:p-space-xl relative overflow-hidden shadow-xl">
-            <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-fipu-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
-              <div className="lg:col-span-8 space-y-space-xs">
-                <div className="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-mint text-forest-dark font-badge-caps text-badge-caps uppercase">
-                  <span>Studentska referada i podrška</span>
-                </div>
-                <h2 className="font-headline-lg text-headline-lg text-on-primary tracking-tight">
-                  Trebate pomoć pri upisu ili odabiru smjera?
-                </h2>
-                <p className="font-body-md text-body-md text-inverse-primary max-w-xl">
-                  Naš ured za studente i voditelji studijskog programa dostupni su svakodnevno putem e-pošte, telefona ili zakazanih virtualnih konzultacija.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-space-sm pt-space-md font-body-sm text-body-sm">
-                  <div className="flex items-center gap-space-xs">
-                    <span className="material-symbols-outlined text-secondary-fixed text-[20px]">mail</span>
-                    <span>fipu-ured@unipu.hr</span>
-                  </div>
-                  <div className="flex items-center gap-space-xs">
-                    <span className="material-symbols-outlined text-fipu-cyan text-[20px]">call</span>
-                    <span>+385 52 877 438</span>
-                  </div>
-                  <div className="flex items-center gap-space-xs">
-                    <span className="material-symbols-outlined text-secondary-fixed text-[20px]">location_on</span>
-                    <span>Rovinjska 14, Pula</span>
-                  </div>
-                </div>
-              </div>
-              <div className="lg:col-span-4 flex flex-col gap-space-sm">
-                <a
-                  className="w-full inline-flex items-center justify-center gap-space-xs py-3 px-space-md rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-lg text-label-lg font-bold hover:bg-surface-mint transition-colors shadow-sm"
-                  href="https://isvu.hr/studomat/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="material-symbols-outlined text-[20px]">account_circle</span>
-                  <span>Pristup Studomatu</span>
-                </a>
-                <a
-                  className="w-full inline-flex items-center justify-center gap-space-xs py-3 px-space-md rounded-full bg-surface-container-highest/20 text-on-primary font-label-lg text-label-lg font-semibold hover:bg-surface-container-highest/30 transition-colors"
-                  href="https://moodle.srce.hr/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="material-symbols-outlined text-[20px] text-fipu-cyan">school</span>
-                  <span>Prijava u Merlin LMS</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <NextPageBlock
+        title="Informiraj se o hodogramu studija"
+        description="Saznaj sve korake — od online prijave i upisa do obrane završnog ili diplomskog rada."
+        label="Hodogram studija"
+        target="putovanje"
+        onNavigate={onNavigate}
+      />
     </div>
   )
 }

@@ -4,7 +4,7 @@ export default function Sidebar({ active, onNavigate }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <img className="sidebar-logo" src="/favicon.svg" alt="FIPU" />
+        <img className="sidebar-logo" src="/images/fipu-hr.png" alt="FIPU" />
         <div>
           <span className="sidebar-brand-name">FIPU</span>
           <span className="sidebar-brand-sub">Vodič za studente</span>
@@ -29,7 +29,7 @@ export default function Sidebar({ active, onNavigate }) {
 
       <div className="sidebar-footer">
         <div className="sidebar-footer-inner">
-          <img src="/favicon.svg" alt="FIPU" />
+          <img src="/images/fipu-hr.png" alt="FIPU" />
           <span>
             Online izvanredni studij Informatike
             <br />© {new Date().getFullYear()} FIPU · Pula

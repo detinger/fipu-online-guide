@@ -1,6 +1,6 @@
 export const programs = [
   {
-    id: 'preddiplomski',
+    id: 'prijediplomski',
     label: 'Prijediplomski',
     labelFull: 'Prijediplomski sveučilišni studij Informatika',
     type: 'Prijediplomski sveučilišni',

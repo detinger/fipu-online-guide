@@ -17,7 +17,7 @@ export const milestones = [
 
 export const programs = [
   {
-    id: 'preddiplomski',
+    id: 'prijediplomski',
     name: 'Prijediplomski studij',
     title: 'Prijediplomski sveučilišni studij Informatika',
     subtitle: 'Online izvanredni studij',

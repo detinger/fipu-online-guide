@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import NextPageBlock from '../NextPageBlock'
 
 function GradeCalculator() {
   const [zadaci, setZadaci] = useState(85)
@@ -81,7 +82,7 @@ function GradeCalculator() {
   )
 }
 
-export default function NastavaModule() {
+export default function NastavaModule({ onNavigate }) {
   return (
     <div className="flex flex-col w-full">
       {/* TOP HEADER & KEY METRICS */}
@@ -89,34 +90,12 @@ export default function NastavaModule() {
         <div className="max-w-[1240px] mx-auto flex flex-col gap-space-lg">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
             <div className="space-y-space-xs max-w-2xl">
-              <div className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-mint text-forest-dark font-badge-caps text-badge-caps">
-                <span className="material-symbols-outlined text-[16px]">terminal</span>
-                <span>FIPU AKREDITIRANA METODOLOGIJA • MODEL E-UČENJA</span>
-              </div>
               <h1 className="font-headline-lg text-headline-lg md:text-display-hero text-on-surface tracking-tight">
                 Nastava, IPN &amp; Tehnološki Alati
               </h1>
               <p className="font-body-lg text-body-lg text-on-surface-variant">
                 Usklađeno za zaposlene studente, digitalne nomade i buduće inženjere. Upoznajte arhitekturu studiranja temeljenu na fleksibilnoj asinkronoj komponenti i preciznim ishodima učenja.
               </p>
-            </div>
-            {/* Metric Badges */}
-            <div className="flex flex-wrap md:flex-nowrap gap-space-sm">
-              <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col min-w-[130px]">
-                <span className="font-badge-caps text-badge-caps text-forest-dark uppercase">Asinkrono udio</span>
-                <span className="font-headline-lg text-headline-lg text-on-surface">75%</span>
-                <span className="font-body-sm text-body-sm text-on-surface-variant">Fleksibilni rad</span>
-              </div>
-              <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col min-w-[130px]">
-                <span className="font-badge-caps text-badge-caps text-unipu-blue uppercase">Merlin LMS</span>
-                <span className="font-headline-lg text-headline-lg text-on-surface">&gt;90%</span>
-                <span className="font-body-sm text-body-sm text-on-surface-variant">3. razina standarda</span>
-              </div>
-              <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col min-w-[130px]">
-                <span className="font-badge-caps text-badge-caps text-fipu-cyan uppercase">Model kolegija</span>
-                <span className="font-headline-lg text-headline-lg text-on-surface">9-6-45</span>
-                <span className="font-body-sm text-body-sm text-on-surface-variant">Sati po semestru</span>
-              </div>
             </div>
           </div>
         </div>
@@ -145,7 +124,7 @@ export default function NastavaModule() {
                 </div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Predavanja uživo</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant">
-                  9 nastavnih sati interaktivnih predavanja preko Google Meeta s nositeljem kolegija. Fokus je na sintezi gradiva, raspravama i usmjeravanju na ključne koncepte.
+                  9 nastavnih sati interaktivnih predavanja preko Google Meeta s profesorima i asistentima. Fokus je na sintezi gradiva, raspravama i usmjeravanju na ključne koncepte.
                 </p>
               </div>
               <div className="mt-space-lg pt-space-md bg-surface-ice rounded-lg p-space-sm flex items-center gap-space-xs text-on-surface-variant">
@@ -162,7 +141,7 @@ export default function NastavaModule() {
                 </div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Laboratorijske vježbe</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant">
-                  6 nastavnih sati praktičnog rada, demonstracija koda uživo, rješavanja arhitektonskih problema i interaktivnog otklanjanja poteškoća s asistentima.
+                  6 nastavnih sati praktičnog rada, demonstracija koda uživo, rješavanja problemskih zadataka i interaktivnog otklanjanja poteškoća s asistentima.
                 </p>
               </div>
               <div className="mt-space-lg pt-space-md bg-surface-ice rounded-lg p-space-sm flex items-center gap-space-xs text-on-surface-variant">
@@ -216,7 +195,7 @@ export default function NastavaModule() {
                     <span className="font-title-card text-title-card">FIPU Online (9P - 6V - 45A)</span>
                   </div>
                   <p className="font-body-sm text-body-sm text-on-surface-variant">
-                    Samo 15 sati sinkronog kontakta raspoređenog u blokovima. Čak 75% fonda odvija se u vašim slobodnim terminima uz stalnu podršku nastavnika.
+                    Samo 15 sati sinkronog kontakta raspoređenog u blokovima — prisustvo nije obvezno, već usluga studentima. Čak 75% fonda odvija se u vašim slobodnim terminima uz stalnu podršku nastavnika.
                   </p>
                 </div>
               </div>
@@ -233,7 +212,10 @@ export default function NastavaModule() {
               <span className="font-badge-caps text-badge-caps text-forest-dark uppercase">Izvedbeni plan nastave (IPN)</span>
               <h2 className="font-headline-lg text-headline-lg text-on-surface">Distribucija ECTS-a &amp; Interaktivni simulator ocjene</h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                Standardni kolegij nosi točno <strong>6.0 ECTS bodova</strong> i obuhvaća <strong>180 sati</strong> ukupnog studentskog rada. Testirajte formulu bodovanja uživo.
+                Standardni kolegij nosi točno <strong>6.0 ECTS bodova</strong> i obuhvaća <strong>180 sati</strong> ukupnog studentskog rada — vrijedi za oba stupnja: prijediplomski (180 ECTS) i diplomski (120 ECTS). Testirajte formulu bodovanja uživo.
+              </p>
+              <p className="font-body-sm text-body-sm text-on-surface-variant italic">
+                ⚠️ Napomena: prikazani podaci su ilustrativni primjer. Stvarna raspodjela sati, bodova i postotaka ovisi o pojedinom kolegiju i njegovom izvedbenom planu nastave.
               </p>
             </div>
             <div className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container font-code-inline text-code-inline text-on-surface-variant">
@@ -349,10 +331,10 @@ export default function NastavaModule() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
             {[
-              { icon: 'event_available', title: '1. Fleksibilnost prisustva', color: 'bg-surface-mint text-forest-dark', desc: 'Prisutnost na predavanjima i vježbama uživo nije obvezna za ostvarivanje potpisa. Sve snimke i nastavni materijali pohranjuju se na Merlinu za naknadno gledanje.' },
+              { icon: 'event_available', title: '1. Fleksibilnost prisustva', color: 'bg-surface-mint text-forest-dark', desc: 'Prisutnost na predavanjima i vježbama uživo nije obvezna za ostvarivanje potpisa. Sinkroni termini se ne snimaju, no svim studentima dostupni su video nastavni materijali na Merlinu.' },
               { icon: 'schedule', title: '2. Pravovremenost dolaska', color: 'bg-surface-container-high text-unipu-blue', desc: 'Ako se odlučite za sudjelovanje uživo, spojite se 2-3 minute prije početka. Prekidanje predavanja naknadnim ulaskom u virtualnu sobu ometa fokus predavača i ostalih studenata.' },
-              { icon: 'videocam', title: '3. Kamera i vizualni kontakt', color: 'bg-surface-mint text-forest-dark', desc: 'Preporučujemo uključenu kameru tijekom diskusija i laboratorijskih konzultacija. To potiče autentičnu suradničku klimu i omogućuje prirodniju inženjersku komunikaciju.' },
-              { icon: 'headset_mic', title: '4. Tehnička audio oprema', color: 'bg-surface-container-high text-unipu-blue', desc: 'Obvezno koristite slušalice i usmjereni mikrofon radi uklanjanja jeke i buke iz okoline. Mikrofon držite isključenim (mute) dok predavač ili kolege izlažu.' },
+              { icon: 'videocam', title: '3. Kamera i vizualni kontakt', color: 'bg-surface-mint text-forest-dark', desc: 'Kamera je obavezna tijekom diskusija i laboratorijskih konzultacija. To potiče autentičnu suradničku klimu i omogućuje prirodniju inženjersku komunikaciju.' },
+              { icon: 'headset_mic', title: '4. Tehnička audio oprema', color: 'bg-surface-container-high text-unipu-blue', desc: 'Preporučujemo koristiti slušalice radi uklanjanja jeke i buke iz okoline. Mikrofon držite isključenim (mute) dok predavač ili kolege izlažu.' },
               { icon: 'forum', title: '5. Aktivno sudjelovanje', color: 'bg-surface-mint text-forest-dark', desc: 'Pitanja i nedoumice postavljajte podizanjem virtualne ruke na Meetu ili putem tekstualnog chata. Nastavnici redovito odvajaju vrijeme za odgovore na kraju nastavnog bloka.' },
               { icon: 'do_not_disturb_on', title: '6. Zabrana neovlaštenog snimanja', color: 'bg-error-container text-error-text', titleColor: 'text-error-text', desc: 'Strogo je zabranjeno neovlašteno snimanje, fotografiranje zaslona ili javna redistribucija materijala. Službena snimanja vrši isključivo nositelj kolegija prema GDPR pravilima.' },
             ].map((rule, i) => (
@@ -406,7 +388,7 @@ export default function NastavaModule() {
                     <span>Google for Education + Gemini AI</span>
                   </div>
                   <p className="font-body-sm text-body-sm text-on-surface-variant">
-                    Svaki student dobiva sveučilišni Google račun s pristupom Google Meetu bez vremenskog ograničenja, Neograničenom Driveu, Google Colabu za Python vježbe i integriranom Gemini Notebooku.
+                    Svaki student dobiva sveučilišni Google račun s pristupom Google Meetu bez vremenskog ograničenja, Google Drive-u, Google Colabu za vježbe i integriranom Gemini Notebooku.
                   </p>
                 </div>
                 <div className="p-space-md bg-surface-ice rounded-xl space-y-space-xs">
@@ -441,12 +423,8 @@ export default function NastavaModule() {
               <span className="font-badge-caps text-badge-caps text-forest-dark uppercase">Kvaliteta e-kolegija</span>
               <h2 className="font-headline-lg text-headline-lg text-on-surface">Merlin standardi: Više od 90% naprednih kolegija</h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                Fakultet informatike u Puli primjenjuje stroge pedagoške i digitalne kriterije Centra za e-učenje SRCE. Više od 90% naših kolegija akreditirano je u najvišem, 3. stupnju standardizacije.
+                Fakultet informatike u Puli kolegije prilagođava prema smjernicama za e-učenje, osiguravajući visoke pedagoške i digitalne standarde za sve studente.
               </p>
-            </div>
-            <div className="bg-surface-mint text-forest-dark px-space-md py-space-sm rounded-xl font-label-lg text-label-lg flex items-center gap-space-xs">
-              <span className="material-symbols-outlined">workspace_premium</span>
-              <span>Centar za e-učenje • Razina 3</span>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
@@ -457,7 +435,7 @@ export default function NastavaModule() {
               </div>
               <h3 className="font-title-card text-title-card text-on-surface">Modularno raščlanjeno gradivo</h3>
               <p className="font-body-sm text-body-sm text-on-surface-variant">
-                Gradivo je podijeljeno u tjedne module s jasno naznačenim ishodima učenja, potrebnim satima pripreme i izravnim poveznicama na video materijale i literaturu.
+                Gradivo je podijeljeno u tjedne module s jasno naznačenim ishodima učenja i izravnim poveznicama na video materijale i literaturu.
               </p>
             </div>
             <div className="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-sm">
@@ -465,9 +443,9 @@ export default function NastavaModule() {
                 <span className="font-badge-caps text-badge-caps text-unipu-blue bg-surface-container-high px-space-sm py-0.5 rounded-full uppercase">Praćenje</span>
                 <span className="material-symbols-outlined text-unipu-blue">checklist</span>
               </div>
-              <h3 className="font-title-card text-title-card text-on-surface">Automatsko praćenje napretka</h3>
+              <h3 className="font-title-card text-title-card text-on-surface">Praćenje napretka</h3>
               <p className="font-body-sm text-body-sm text-on-surface-variant">
-                Ugrađeni "Completion tracking" vizualno prikazuje koje ste cjeline odradili, a koje vam predstoje. Nema nagađanja o predanim zadaćama i rokovima.
+                Napredak studenta prati se kroz aktivnosti na Merlin LMS i Google for Education Plus platformi — predane zadaće, sudjelovanje na forumima i ostvareni bodovi.
               </p>
             </div>
             <div className="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-sm">
@@ -483,6 +461,13 @@ export default function NastavaModule() {
           </div>
         </div>
       </section>
+      <NextPageBlock
+        title="Provjeri jesi li spreman za online studij"
+        description="Kratki interaktivni upitnik o tehničkoj opremljenosti, digitalnoj zrelosti i samodisciplini."
+        label="Pokreni samoprocjenu"
+        target="kviz"
+        onNavigate={onNavigate}
+      />
     </div>
   )
 }

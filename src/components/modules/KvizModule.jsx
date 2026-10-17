@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react'
+import ContactFooter from '../ContactFooter'
 
 const CHECKLIST_TABS = [
   { id: 'hw', label: 'Hardver' },
-  { id: 'sw', label: 'Softver & OS' },
+  { id: 'sw', label: 'Softver' },
   { id: 'skills', label: 'Digitalne vještine' },
 ]
 
@@ -34,7 +35,7 @@ const QUIZ_QUESTIONS = [
   { category: 'Organizacija vremena', text: 'Možeš li izdvojiti 15 do 20 sati tjedno za praćenje predavanja, laboratorijske vježbe i samostalno rješavanje programskih zadataka?', hint: 'Online studij na FIPU ima jednak akademski volumen ECTS bodova kao i klasični studij, što zahtijeva redovito tjedno ulaganje vremena.' },
   { category: 'Samostalnost i disciplina', text: 'Smatraš li se sposobnim organizirati vlastiti tjedni raspored učenja bez svakodnevnog fizičkog odlaska na fakultet?', hint: 'Samousmjerenost i proaktivnost ključne su vrline uspješnih online polaznika u virtualnim učionicama.' },
   { category: 'Hardverska opremljenost', text: 'Imaš li pouzdano računalo (manje od 5 god.), mikrofon i HD web kameru za izvođenje interaktivnih vježbi i kolokvija?', hint: 'Kontinuirana provjera znanja i praktične prezentacije koda traže stabilnu i podržanu hardversku konfiguraciju.' },
-  { category: 'Mrežna infrastruktura', text: 'Posjeduješ li stabilan kućni pristup internetu s brzinom od barem 4 Mbps za video prijenos predavanja uživo?', hint: 'Interaktivna predavanja i radionice koriste video streaming visoke kvalitete u sustavu BigBlueButton.' },
+  { category: 'Mrežna infrastruktura', text: 'Posjeduješ li stabilan kućni pristup internetu s brzinom od barem 4 Mbps za video prijenos predavanja uživo?', hint: 'Interaktivna predavanja i radionice koriste video streaming visoke kvalitete putem Google Meeta.' },
   { category: 'Tehnički afinitet', text: 'Jesi li spreman/na samostalno instalirati alate poput VS Code-a, Pythona, Gita i rješavati programske greške uz dokumentaciju?', hint: 'Prva godina studija brzo uvodi studente u programiranje gdje se očekuje istraživački stav prema greškama u kodu.' },
   { category: 'Komunikacija na daljinu', text: 'Osjećaš li se ugodno postavljati pitanja profesorima i asistentima pismenim putem ili putem video poziva?', hint: 'Online nastava potiče aktivnu kulturu postavljanja pitanja u forumima i konzultacijama bez ustručavanja.' },
   { category: 'Timski rad i kolaboracija', text: 'Možeš li surađivati s kolegama na daljinu u izradi timskih softverskih projekata i laboratorijskih zadataka?', hint: 'Softversko inženjerstvo timski je sport; vještina kolaboracije u Git repozitorijima gradi se od prve godine.' },
@@ -44,7 +45,7 @@ const QUIZ_QUESTIONS = [
 const FAQ_ITEMS = [
   {
     q: 'Koja su prava i obveze izvanrednih studenata na online studiju?',
-    a: 'Izvanredni studenti na online studiju informatike imaju jednaku vrijednost diplome (180 ECTS za preddiplomski studij) i stječu akademski naziv sveučilišnog prvostupnika (baccalaureus) informatike. Nastava je prilagođena zaposlenima (asinkroni materijali i večernja online predavanja uživo), a studentska prava ostvaruju se putem sustava ISVU i studentske iskaznice.',
+    a: 'Izvanredni studenti na online studiju informatike imaju jednaku vrijednost diplome — prijediplomski studij nosi 180 ECTS i daje naziv sveučilišnog prvostupnika (univ. bacc. inf.), a diplomski studij nosi 120 ECTS i izvodi se u dva smjera: Informatika (mag. inf.) i Nastavni smjer informatike (mag. inf. et inf. educ.). Nastava je prilagođena zaposlenima (asinkroni materijali i večernja online predavanja uživo), a studentska prava ostvaruju se putem sustava ISVU i studentske iskaznice.',
   },
   {
     q: 'Mogu li se kolokviji i ispiti polagati potpuno na daljinu?',
@@ -52,11 +53,11 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Kako funkcionira plaćanje školarine i upis godine?',
-    a: 'Školarina se definira odlukom Senata Sveučilišta Jurja Dobrile u Puli za svaku akademsku godinu. Fakultet redovito omogućuje obročno plaćanje (do više rata) putem računa uz generiranje uplatnica na Studomatu. Prijave se provode kroz portal Postani-student ili izravni upisni ured FIPU-a za prijelaznike.',
+    a: 'Školarina se definira odlukom Senata Sveučilišta Jurja Dobrile u Puli za svaku akademsku godinu. Mogućnost obročnog plaćanja regulirana je aktima Sveučilišta Jurja Dobrile u Puli, uz generiranje uplatnica na Studomatu. Prijave se provode kroz portal Postani-student za prijediplomski studij te studij.hr za diplomski studij. Studenti prijelaznici prijavljuju se izravno putem upisnog ureda FIPU-a.',
   },
   {
     q: 'Što ako zapnem s instalacijom razvojnog okruženja ili koda?',
-    a: 'Svaki student ima pristup tjednim online konzultacijama s asistentima i profesorima, kao i službenom Discord/Teams kanalu generacije gdje mentori i kolege pružaju tehničku pomoć oko postavljanja alata, dockera, biblioteka i repozitorija.',
+    a: 'Svaki student ima pristup tjednim online konzultacijama s asistentima i profesorima, kao i službenom Google Chat kanalu kolegija gdje mentori i kolege pružaju tehničku pomoć oko postavljanja alata, biblioteka i repozitorija.',
   },
 ]
 
@@ -119,15 +120,11 @@ export default function KvizModule() {
       <section className="relative w-full overflow-hidden bg-surface-ice py-space-xl px-margin">
         <div className="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
           <div className="lg:col-span-7 flex flex-col items-start gap-space-md">
-            <div className="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-mint text-forest-dark font-badge-caps text-badge-caps uppercase tracking-wider shadow-sm">
-              <span className="material-symbols-outlined text-[15px]">psychology</span>
-              <span>Službeni dijagnostički centar za kandidate</span>
-            </div>
-            <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+            <h1 className="font-headline-lg text-headline-lg md:text-display-hero text-on-surface tracking-tight">
               Provjeri spremnost za <span className="text-forest-dark">FIPU Online</span> studij
             </h1>
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-              Online preddiplomski studij informatike zahtijeva tehničku opremljenost, digitalnu zrelost i visoku razinu samodiscipline. Riješi brzu interaktivnu provjeru i provjeri zadovoljavaš li akademske i tehničke preduvjete.
+              Online prijediplomski studij informatike zahtijeva tehničku opremljenost, digitalnu zrelost i visoku razinu samodiscipline. Riješi brzu interaktivnu provjeru i provjeri zadovoljavaš li akademske i tehničke preduvjete.
             </p>
             <div className="flex flex-wrap items-center gap-space-md pt-space-xs">
               <a
@@ -154,10 +151,6 @@ export default function KvizModule() {
                   alt="Student informatike pri studiranju"
                   src="/images/study-writing.jpg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent flex flex-col justify-end p-space-md">
-                  <span className="text-fipu-cyan font-badge-caps text-badge-caps uppercase tracking-wider">Metodologija IPN 2025</span>
-                  <p className="text-on-primary font-title-card text-title-card mt-0.5">Samostalnost • Praktičan kod • Mentorstvo</p>
-                </div>
               </div>
               <div className="grid grid-cols-3 gap-space-xs pt-space-sm text-center">
                 <div className="bg-surface-container-low p-space-xs rounded-lg">
@@ -188,7 +181,7 @@ export default function KvizModule() {
                 💻 Kontrolna lista minimalnih uvjeta
               </h2>
               <p className="font-body-md text-body-md text-on-surface-variant mt-1 max-w-2xl">
-                Označite stavke koje posjedujete ili kojima raspolažete kako biste provjerili tehničku kompatibilnost s platformama Merlin LMS, BigBlueButton i razvojnim alatima.
+                Označite stavke koje posjedujete ili kojima raspolažete kako biste provjerili tehničku kompatibilnost s platformama Merlin LMS, Google Meet i razvojnim alatima.
               </p>
             </div>
             <div className="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm min-w-[240px]">
@@ -417,18 +410,15 @@ export default function KvizModule() {
             {/* Contact sidebar */}
             <div className="lg:col-span-4 bg-surface-container-lowest p-space-lg rounded-3xl shadow-md space-y-space-md">
               <div className="space-y-space-xs">
-                <span className="bg-surface-mint text-forest-dark font-badge-caps text-badge-caps px-space-sm py-space-xs rounded-full uppercase tracking-wider inline-block">
-                  Ured za studente
-                </span>
                 <h3 className="font-headline-md text-headline-md text-on-surface">Trebate izravnu pomoć?</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant">
-                  Naša studentska referada i koordinatori online studija stoje vam na raspolaganju za sva administrativna pitanja.
+                  Naš ured i koordinatori online studija stoje vam na raspolaganju za sva administrativna pitanja.
                 </p>
               </div>
               <div className="space-y-space-sm pt-space-xs">
                 {[
                   { icon: 'location_on', color: 'text-forest-dark', label: 'Fakultet informatike u Puli', sub: 'Ulica Alda Negrija 6, 52100 Pula, Hrvatska' },
-                  { icon: 'call', color: 'text-unipu-blue', label: 'Telefon referade', sub: '+385 52 877 438' },
+                  { icon: 'call', color: 'text-unipu-blue', label: 'Telefon ureda', sub: '+385 52 877 438' },
                   { icon: 'mail', color: 'text-forest-dark', label: 'Službeni e-mail', sub: 'fipu-ured@unipu.hr', href: 'mailto:fipu-ured@unipu.hr' },
                   { icon: 'schedule', color: 'text-outline', label: 'Uredovno radno vrijeme', sub: 'Pon – Pet: 09:00 – 14:00 sati' },
                 ].map((c, i) => (
@@ -445,20 +435,12 @@ export default function KvizModule() {
                 ))}
               </div>
               <div className="pt-space-xs">
-                <a
-                  className="w-full inline-flex items-center justify-center gap-space-xs py-space-sm rounded-full bg-surface-container-high hover:bg-surface-mint hover:text-forest-dark text-on-surface font-label-lg text-label-lg transition-colors"
-                  href="https://fipu.unipu.hr/fipu/o_fakultetu/kontakti"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span>Imenik djelatnika FIPU</span>
-                  <span className="material-symbols-outlined text-[16px]">north_east</span>
-                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <ContactFooter />
     </div>
   )
 }

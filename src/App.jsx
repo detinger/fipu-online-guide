@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import TopNav from './components/TopNav'
+import DemoBadge from './components/DemoBadge'
 import HomeModule from './components/modules/HomeModule'
 import NastavaModule from './components/modules/NastavaModule'
 import PutovanjeModule from './components/modules/PutovanjeModule'
@@ -12,7 +13,10 @@ const VIEW_MAP = {
 
 export default function App() {
   const [active, setActive] = useState('home')
-  const navigate = (id) => setActive(VIEW_MAP[id] || id)
+  const navigate = (id) => {
+    setActive(VIEW_MAP[id] || id)
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }
 
   const views = {
     home:      <HomeModule onNavigate={navigate} />,
@@ -24,6 +28,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <TopNav active={active} onNavigate={navigate} />
+      <DemoBadge />
       <main className="app-main">
         <AnimatePresence mode="wait">
           <motion.div
