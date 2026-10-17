@@ -1,0 +1,887 @@
+<style>
+  :root {
+    --clr: #0e9e6e;
+    --clr-light: #e0f6ee;
+    --clr-mid: #c2edd9;
+    --clr-dark: #0a7a52;
+    --border: #e5e9ef;
+    --muted: #6c757d;
+    --transition: 0.18s ease;
+    --radius: 10px;
+  }
+
+  .oi-section { margin-bottom: 36px; }
+
+  .oi-section-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--clr-dark);
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--clr-mid);
+  }
+
+  /* ── Hero ── */
+  .oi-hero {
+    background: linear-gradient(135deg, var(--clr-dark) 0%, #1ab87e 100%);
+    border-radius: 14px;
+    padding: 26px 30px;
+    color: #fff;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .oi-hero::before {
+    content: '';
+    position: absolute;
+    right: -50px; top: -50px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+  .oi-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .oi-hero h2 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin: 0 0 10px;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .oi-hero p {
+    font-size: 0.84rem;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.55;
+    max-width: 580px;
+  }
+  .oi-hero-stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .oi-stat-value { font-size: 1.4rem; font-weight: 900; display: block; }
+  .oi-stat-label { font-size: 0.67rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.07em; display: block; }
+
+  /* ── Benefits ── */
+  .oi-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .oi-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    background: var(--clr-light);
+    border-radius: var(--radius);
+    border: 1px solid var(--clr-mid);
+    transition: transform var(--transition);
+  }
+  .oi-benefit:hover { transform: translateY(-2px); }
+  .oi-benefit-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+  .oi-benefit-text { font-size: 0.82rem; color: #1e2e1e; line-height: 1.5; }
+
+  /* ── Tabs ── */
+  .oi-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .oi-tab-btn {
+    padding: 7px 16px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: #fff;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .oi-tab-btn.active, .oi-tab-btn:hover { background: var(--clr); color: #fff; border-color: var(--clr); }
+  .oi-tab-panel { display: none; }
+  .oi-tab-panel.active { display: block; }
+
+  /* ── Journey steps ── */
+  .oi-journey { display: flex; flex-direction: column; }
+  .oi-step { display: flex; gap: 14px; position: relative; }
+  .oi-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 17px; top: 38px; bottom: 0;
+    width: 2px;
+    background: var(--clr-mid);
+  }
+  .oi-step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--clr);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .oi-step-body { padding: 6px 0 20px; }
+  .oi-step-title { font-size: 0.88rem; font-weight: 800; color: #1a1a2e; margin: 0 0 4px; }
+  .oi-step-desc { font-size: 0.8rem; color: var(--muted); margin: 0; line-height: 1.5; }
+
+  /* ── Checklist ── */
+  .oi-checklist { display: flex; flex-direction: column; gap: 7px; }
+  .oi-check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+  }
+  .oi-check-item:hover { border-color: var(--clr-mid); background: var(--clr-light); }
+  .oi-check-item.checked { background: var(--clr-light); border-color: var(--clr); }
+  .oi-check-box {
+    width: 20px; height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    font-size: 0.7rem;
+    color: transparent;
+  }
+  .oi-check-item.checked .oi-check-box { background: var(--clr); border-color: var(--clr); color: #fff; }
+  .oi-check-label { font-size: 0.82rem; color: #333; }
+
+  /* ── Quiz ── */
+  .oi-quiz {
+    background: #fff;
+    border: 1px solid var(--clr-mid);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: 0 2px 10px rgba(14,158,110,0.08);
+  }
+  .oi-quiz-progress { height: 4px; background: var(--clr-mid); border-radius: 2px; margin-bottom: 18px; overflow: hidden; }
+  .oi-quiz-progress-fill { height: 100%; background: var(--clr); border-radius: 2px; transition: width 0.3s ease; }
+  .oi-quiz-question { display: none; }
+  .oi-quiz-question.active { display: block; }
+  .oi-quiz-counter { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 8px; }
+  .oi-quiz-q-text { font-size: 0.95rem; font-weight: 700; color: #1a1a2e; margin: 0 0 18px; line-height: 1.45; }
+  .oi-quiz-btns { display: flex; gap: 10px; }
+  .oi-quiz-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    background: #fafbfc;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .oi-quiz-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+  .oi-quiz-btn.yes:hover { background: var(--clr-light); border-color: var(--clr); color: var(--clr-dark); }
+  .oi-quiz-btn.no:hover { background: #fef0ee; border-color: #e07060; color: #a03a2a; }
+  .oi-quiz-result { display: none; text-align: center; padding: 10px 0 6px; }
+  .oi-quiz-result.active { display: block; }
+  .oi-quiz-score { font-size: 3rem; font-weight: 900; color: var(--clr-dark); line-height: 1; }
+  .oi-quiz-emoji { font-size: 2rem; margin: 8px 0; }
+  .oi-quiz-verdict { font-size: 0.9rem; color: #333; line-height: 1.55; margin: 10px 0 18px; }
+  .oi-quiz-restart {
+    padding: 9px 22px;
+    border-radius: 20px;
+    background: var(--clr);
+    color: #fff;
+    border: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition);
+  }
+  .oi-quiz-restart:hover { background: var(--clr-dark); }
+
+  /* ── Tools ── */
+  .oi-tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .oi-tool {
+    padding: 18px 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+  }
+  .oi-tool:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); border-color: var(--clr-mid); transform: translateY(-2px); }
+  .oi-tool-icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .oi-tool-name { font-size: 0.85rem; font-weight: 800; color: #1a1a2e; margin: 0 0 4px; }
+  .oi-tool-desc { font-size: 0.72rem; color: var(--muted); margin: 0; line-height: 1.4; }
+
+  /* ── P/V/A teaching cards ── */
+  .oi-teaching {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 560px) { .oi-teaching { grid-template-columns: 1fr; } }
+  .oi-teaching-card {
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 14px;
+    text-align: center;
+    transition: border-color var(--transition);
+  }
+  .oi-teaching-card:hover { border-color: var(--clr); }
+  .oi-teaching-letter { font-size: 2.2rem; font-weight: 900; color: var(--clr-dark); line-height: 1; margin-bottom: 6px; }
+  .oi-teaching-name { font-size: 0.78rem; font-weight: 700; color: #1a1a2e; margin: 0 0 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .oi-teaching-badge { display: inline-block; font-size: 0.64rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: var(--clr-mid); color: var(--clr-dark); margin-bottom: 8px; }
+  .oi-teaching-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.4; margin: 0; }
+
+  /* ── IPN table ── */
+  .oi-ipn-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .oi-ipn-table th { background: var(--clr-light); color: var(--clr-dark); font-size: 0.71rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 9px 11px; text-align: left; border-bottom: 2px solid var(--clr-mid); }
+  .oi-ipn-table td { padding: 9px 11px; border-bottom: 1px solid #f3f4f6; color: #333; }
+  .oi-ipn-table tr:last-child td { font-weight: 800; background: #f8f9fa; border-bottom: none; }
+
+  .oi-formula {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    background: var(--clr-light);
+    border: 1px solid var(--clr-mid);
+    border-radius: 8px;
+    margin-top: 14px;
+  }
+  .oi-formula-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+  .oi-formula-part { padding: 4px 10px; background: #fff; border: 1px solid var(--clr-mid); border-radius: 6px; font-size: 0.8rem; font-weight: 700; color: var(--clr-dark); }
+  .oi-formula-op { color: var(--muted); }
+
+  /* ── Rules ── */
+  .oi-rules { display: flex; flex-direction: column; gap: 8px; }
+  .oi-rule {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color var(--transition);
+  }
+  .oi-rule:hover { border-color: var(--clr-mid); }
+  .oi-rule-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .oi-rule-title { font-size: 0.84rem; font-weight: 700; color: #1a1a2e; margin: 0 0 2px; }
+  .oi-rule-desc { font-size: 0.78rem; color: var(--muted); margin: 0; line-height: 1.45; }
+
+  /* ── Accordion ── */
+  details.oi-accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 6px; }
+  details.oi-accordion[open] { box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-color: var(--clr-mid); }
+  details.oi-accordion summary {
+    padding: 13px 16px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    cursor: pointer;
+    list-style: none;
+    background: #fafbfc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  details.oi-accordion summary::-webkit-details-marker { display: none; }
+  details.oi-accordion[open] summary { background: var(--clr-light); border-bottom: 1px solid var(--clr-mid); color: var(--clr-dark); }
+  .oi-acc-arrow { margin-left: auto; font-size: 0.6rem; color: var(--muted); transition: transform var(--transition); }
+  details.oi-accordion[open] .oi-acc-arrow { transform: rotate(90deg); }
+  details.oi-accordion .oi-acc-body { padding: 14px 16px; font-size: 0.83rem; color: #333; line-height: 1.6; }
+  details.oi-accordion .oi-acc-body p { margin: 0 0 10px; }
+  details.oi-accordion .oi-acc-body p:last-child { margin: 0; }
+  details.oi-accordion .oi-acc-body ul, details.oi-accordion .oi-acc-body ol { margin: 6px 0; padding-left: 18px; display: flex; flex-direction: column; gap: 5px; }
+  details.oi-accordion .oi-acc-body code { background: var(--clr-light); color: var(--clr-dark); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+
+  /* ── Journey image card ── */
+  .oi-journey-img {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 16px;
+    cursor: zoom-in;
+    transition: box-shadow var(--transition);
+    position: relative;
+  }
+  .oi-journey-img:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .oi-journey-img img { width: 100%; height: auto; display: block; }
+  .oi-journey-img-hint {
+    position: absolute;
+    bottom: 8px; right: 8px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    pointer-events: none;
+  }
+
+  /* ── Lightbox ── */
+  .oi-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    padding: 24px;
+  }
+  .oi-lightbox.active { display: flex; }
+  .oi-lightbox img {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    object-fit: contain;
+  }
+  .oi-lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    opacity: 0.8;
+    line-height: 1;
+    user-select: none;
+  }
+  .oi-lightbox-close:hover { opacity: 1; }
+
+  /* ── Contact ── */
+  .oi-contact {
+    background: var(--clr-light);
+    border: 1px solid var(--clr-mid);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .oi-contact-icon { font-size: 2rem; flex-shrink: 0; }
+  .oi-contact-title { font-size: 0.9rem; font-weight: 800; color: var(--clr-dark); margin: 0 0 8px; }
+  .oi-contact-info { font-size: 0.83rem; color: #333; line-height: 1.7; margin: 0; }
+  .oi-contact-info a { color: var(--clr-dark); font-weight: 600; }
+</style>
+
+<!-- HERO -->
+<div class="oi-hero">
+  <div class="oi-hero-badge">🏆 Prekretnica 2. studenoga 2022.</div>
+  <h2>Online sveučilišni studij Informatike na FIPU</h2>
+  <p>Fakultet informatike u Puli dobio je odobrenje za izvođenje prvog sveučilišnog online studija informatike u Hrvatskoj. Studij je namijenjen svima koji žele studirati uz posao, iz udaljenih mjesta ili vlastitim tempom.</p>
+  <div class="oi-hero-stats">
+    <div>
+      <span class="oi-stat-value">Self-paced</span>
+      <span class="oi-stat-label">Vlastiti tempo učenja</span>
+    </div>
+    <div>
+      <span class="oi-stat-value">180 + 120</span>
+      <span class="oi-stat-label">ECTS (preddiplomski + diplomski)</span>
+    </div>
+    <div>
+      <span class="oi-stat-value">#1</span>
+      <span class="oi-stat-label">Sveučilišni online studij inf. u HR</span>
+    </div>
+  </div>
+</div>
+
+<!-- PREDNOSTI -->
+<div class="oi-section">
+  <h2 class="oi-section-title">💡 Prednosti online učenja</h2>
+  <div class="oi-benefits">
+    <div class="oi-benefit">
+      <span class="oi-benefit-icon">🤝</span>
+      <span class="oi-benefit-text">Platforme za e-učenje olakšavaju osobni kontakt studenata i profesora, ali ga ne zamjenjuju.</span>
+    </div>
+    <div class="oi-benefit">
+      <span class="oi-benefit-icon">⚡</span>
+      <span class="oi-benefit-text">Individualno stječete vještine potrebne za maksimalni potencijal u digitalnom dobu.</span>
+    </div>
+    <div class="oi-benefit">
+      <span class="oi-benefit-icon">🔄</span>
+      <span class="oi-benefit-text">Učinkovitija integracija znanja i vještina kroz cjeloživotno obrazovanje.</span>
+    </div>
+    <div class="oi-benefit">
+      <span class="oi-benefit-icon">🌍</span>
+      <span class="oi-benefit-text">Studenti iz čitave Hrvatske i inozemstva imaju pristup iskustvu Sveučilišta u Puli.</span>
+    </div>
+    <div class="oi-benefit">
+      <span class="oi-benefit-icon">⚖️</span>
+      <span class="oi-benefit-text">Svim studentima daje pravedan i jednak pristup učenju.</span>
+    </div>
+  </div>
+</div>
+
+<!-- PUTOVANJE STUDENTA -->
+<div class="oi-section">
+  <h2 class="oi-section-title">🗺️ Putovanje studenta</h2>
+  <div class="oi-tabs">
+    <button class="oi-tab-btn active" data-tab="journey" data-panel="j0">📝 Upis</button>
+    <button class="oi-tab-btn" data-tab="journey" data-panel="j1">📚 Studiranje</button>
+    <button class="oi-tab-btn" data-tab="journey" data-panel="j2">📋 Ispiti</button>
+    <button class="oi-tab-btn" data-tab="journey" data-panel="j3">🆘 Podrška</button>
+  </div>
+
+  <div id="j0" class="oi-tab-panel active" data-group="journey">
+    <div class="oi-journey-img" onclick="openLightbox('/images/50037170/upis-journey.png')">
+      <img src="/images/50037170/upis-journey.png" alt="Dijagram procesa upisa">
+      <span class="oi-journey-img-hint">🔍 Klikni za zoom</span>
+    </div>
+    <div class="oi-journey">
+      <div class="oi-step">
+        <div class="oi-step-num">1</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Informiranje</p>
+          <p class="oi-step-desc">Detaljno se informiraj u Chatboxu ili Studentskoj referadi o uvjetima upisa, školarini i procesu.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">2</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Online prijava na UNIPU</p>
+          <p class="oi-step-desc">Slijedi proceduru online prijave na web stranici Sveučilišta u Puli.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">3</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Studentski ugovor i školarina</p>
+          <p class="oi-step-desc">Nakon upisa potpisuješ studentski ugovor i plaćaš školarinu.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">4</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Digitalni identitet i početak</p>
+          <p class="oi-step-desc">Dobivaš sveučilišne vjerodajnice i upute za pristup Merlinu, Google Meet-u i ostalim alatima.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="j1" class="oi-tab-panel" data-group="journey">
+    <div class="oi-journey-img" onclick="openLightbox('/images/50037170/ucenje-journey.png')">
+      <img src="/images/50037170/ucenje-journey.png" alt="Dijagram procesa studiranja">
+      <span class="oi-journey-img-hint">🔍 Klikni za zoom</span>
+    </div>
+    <div class="oi-journey">
+      <div class="oi-step">
+        <div class="oi-step-num">1</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Savladavanje gradiva</p>
+          <p class="oi-step-desc">Učiš prema vlastitom tempu — video predavanja, materijali, kvizovi za samoocjenjivanje na Merlinu. Sinkrona nastava nije obvezna.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">2</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Pomoć i konzultacije</p>
+          <p class="oi-step-desc">Naiđeš li na poteškoće, javi se nositelju kolegija putem foruma ili chata na Merlinu.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">3</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Upis sljedeće godine</p>
+          <p class="oi-step-desc">Polaganjem svih ispita u tekućoj godini možeš upisati sljedeću. Završi sve — dobiješ diplomu!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="j2" class="oi-tab-panel" data-group="journey">
+    <div class="oi-journey-img" onclick="openLightbox('/images/50037170/ispit-journey.png')">
+      <img src="/images/50037170/ispit-journey.png" alt="Dijagram procesa ispita">
+      <span class="oi-journey-img-hint">🔍 Klikni za zoom</span>
+    </div>
+    <div class="oi-journey">
+      <div class="oi-step">
+        <div class="oi-step-num">1</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Pismeni ili praktični ispit</p>
+          <p class="oi-step-desc">Kad si siguran u znanje, pristupaš pismenom ili praktičnom dijelu — dokazuje sposobnost rješavanja izazova iz prakse.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">2</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Usmeni ispit</p>
+          <p class="oi-step-desc">Usmeni dio ispita ocjenjuje teorijsko razumijevanje — provodi se online putem videokonferencije.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="j3" class="oi-tab-panel" data-group="journey">
+    <div class="oi-journey-img" onclick="openLightbox('/images/50037170/referada-journey.png')">
+      <img src="/images/50037170/referada-journey.png" alt="Dijagram kontakta s referadom">
+      <span class="oi-journey-img-hint">🔍 Klikni za zoom</span>
+    </div>
+    <div class="oi-journey">
+      <div class="oi-step">
+        <div class="oi-step-num">1</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Prijavi poteškoću što prije</p>
+          <p class="oi-step-desc">Naiđeš li na administrativnu ili studijsku poteškoću, kontaktiraj fakultet što je moguće ranije.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">2</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Odgovor u 48 sati</p>
+          <p class="oi-step-desc">Ovisno o danu u tjednu, odgovor od fakulteta možeš očekivati unutar 48 sati.</p>
+        </div>
+      </div>
+      <div class="oi-step">
+        <div class="oi-step-num">3</div>
+        <div class="oi-step-body">
+          <p class="oi-step-title">Rješavanje</p>
+          <p class="oi-step-desc">Ovisno o problemu, možemo tražiti dodatne dokumente ili informacije za rješavanje slučaja.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TECH REQUIREMENTS -->
+<div class="oi-section">
+  <h2 class="oi-section-title">💻 Minimalni tehnički zahtjevi</h2>
+  <p style="font-size:0.82rem;color:var(--muted);margin:0 0 14px;">Klikni na stavke koje već imaš — provjeri jesi li spreman!</p>
+  <div class="oi-tabs">
+    <button class="oi-tab-btn active" data-tab="tech" data-panel="t0">🖥️ Hardver</button>
+    <button class="oi-tab-btn" data-tab="tech" data-panel="t1">⚙️ Softver</button>
+    <button class="oi-tab-btn" data-tab="tech" data-panel="t2">🧠 Digitalne vještine</button>
+  </div>
+
+  <div id="t0" class="oi-tab-panel active" data-group="tech">
+    <div class="oi-checklist">
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Moderan PC ili Laptop (ne stariji od 5 godina)</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Pristup internetu — min. 4 Mbit/s nizvodno, 1 Mbit/s uzvodno, neograničen promet</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Web kamera (preporučeno vanjska USB kamera)</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Slušalice i mikrofon</span></div>
+    </div>
+  </div>
+
+  <div id="t1" class="oi-tab-panel" data-group="tech">
+    <div class="oi-checklist">
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Operativni sustav: Windows 10+, macOS 11+ ili GNU/Linux (Debian, Ubuntu…)</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Web preglednik: Chrome, Firefox ili Safari</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Preglednik PDF dokumenata</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Visual Studio Code</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Python 3.10+, Jupyter (ili Anaconda)</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">C++ radno okruženje (LLVM ili GCC)</span></div>
+    </div>
+  </div>
+
+  <div id="t2" class="oi-tab-panel" data-group="tech">
+    <div class="oi-checklist">
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Informacijska/podatkovna pismenost (ECDL osnovna razina)</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Komunikacija i suradnja putem digitalnih alata</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Stvaranje digitalnog sadržaja</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Osnovna razina digitalne sigurnosti i zaštite</span></div>
+      <div class="oi-check-item" onclick="toggleCheck(this)"><div class="oi-check-box"></div><span class="oi-check-label">Digitalno rješavanje problema</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SELF-CHECK QUIZ -->
+<div class="oi-section">
+  <h2 class="oi-section-title">🤔 Jesi li spreman za online studij?</h2>
+  <p style="font-size:0.82rem;color:var(--muted);margin:0 0 14px;">8 pitanja · odgovori iskreno · saznaj odmah</p>
+  <div class="oi-quiz">
+    <div class="oi-quiz-progress"><div class="oi-quiz-progress-fill" id="quiz-bar" style="width:0%"></div></div>
+
+    <div class="oi-quiz-question active"><p class="oi-quiz-counter">Pitanje 1 od 8</p><p class="oi-quiz-q-text">Zainteresirani ste za online studij informatike?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+    <div class="oi-quiz-question"><p class="oi-quiz-counter">Pitanje 2 od 8</p><p class="oi-quiz-q-text">Imate li posebno mjesto gdje možete učiti bez ometanja?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+    <div class="oi-quiz-question"><p class="oi-quiz-counter">Pitanje 3 od 8</p><p class="oi-quiz-q-text">Imate li pristup računalu i stabilnom internetu?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+    <div class="oi-quiz-question"><p class="oi-quiz-counter">Pitanje 4 od 8</p><p class="oi-quiz-q-text">Jeste li sigurni u komunikaciji usmenim i pisanim jezikom?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+    <div class="oi-quiz-question"><p class="oi-quiz-counter">Pitanje 5 od 8</p><p class="oi-quiz-q-text">Imate li solidne tehnološke vještine izvan društvenih mreža?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+    <div class="oi-quiz-question"><p class="oi-quiz-counter">Pitanje 6 od 8</p><p class="oi-quiz-q-text">Imate li dobru podršku okoline za studiranje?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+    <div class="oi-quiz-question"><p class="oi-quiz-counter">Pitanje 7 od 8</p><p class="oi-quiz-q-text">Možete li svaki dan odvojiti nekoliko sati za učenje?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+    <div class="oi-quiz-question"><p class="oi-quiz-counter">Pitanje 8 od 8</p><p class="oi-quiz-q-text">Sposobni ste samostalno upravljati svojim vremenom bez vanjske kontrole?</p><div class="oi-quiz-btns"><button class="oi-quiz-btn yes" onclick="quizAnswer(true)">👍 Da</button><button class="oi-quiz-btn no" onclick="quizAnswer(false)">👎 Ne</button></div></div>
+
+    <div class="oi-quiz-result" id="quiz-result">
+      <div class="oi-quiz-score" id="quiz-score"></div>
+      <div class="oi-quiz-emoji" id="quiz-emoji"></div>
+      <p class="oi-quiz-verdict" id="quiz-verdict"></p>
+      <button class="oi-quiz-restart" onclick="quizRestart()">↺ Pokušaj ponovo</button>
+    </div>
+  </div>
+</div>
+
+<!-- REDOVNI vs IZVANREDNI -->
+<div class="oi-section">
+  <h2 class="oi-section-title">❓ Što je izvanredni online studij?</h2>
+
+  <details class="oi-accordion" open>
+    <summary><span>⚖️ Razlika između redovnog i izvanrednog studija</span><span class="oi-acc-arrow">▶</span></summary>
+    <div class="oi-acc-body">
+      <p>Prema Zakonu o visokom obrazovanju, studenti mogu biti <strong>redoviti</strong> ili <strong>izvanredni</strong>.</p>
+      <p><strong>Redoviti studenti</strong> studiraju prema programu punog opterećenja, a troškove im može pokriti državni proračun.</p>
+      <p><strong>Izvanredni studenti</strong> pohađaju program uz rad ili drugu aktivnost, imaju prilagođene termine nastave i školarinu plaćaju sami. Naš online studij je izvanredni studij — idealan za zaposlene ili one koji ne mogu fizički dolaziti u Pulu.</p>
+      <p>Izvanredni studenti nemaju pravo na subvencioniranu prehranu, smještaj, prijevoz i zdravstveno osiguranje po osnovi statusa studenta.</p>
+    </div>
+  </details>
+
+  <details class="oi-accordion">
+    <summary><span>🎯 Zašto je FIPU otvorilo online studij?</span><span class="oi-acc-arrow">▶</span></summary>
+    <div class="oi-acc-body">
+      <p>Otvaranje online studija bila je strateška odrednica UNIPU. Ključni razlozi:</p>
+      <ul>
+        <li>Brojni upiti studenata koji ne mogu dolaziti u Pulu ili rade</li>
+        <li>Projekt e-Sveučilišta (CARNET, Srce) i uvođenje suvremenih alata</li>
+        <li>Izgradnja Green Room Studija za multimedijske obrazovne sadržaje</li>
+        <li>Inovacije u edutech sektoru i transformacija visokog obrazovanja</li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<!-- ALATI I PLATFORME -->
+<div class="oi-section">
+  <h2 class="oi-section-title">🛠️ Alati i platforme</h2>
+  <div class="oi-tools">
+    <div class="oi-tool"><div class="oi-tool-icon">📚</div><p class="oi-tool-name">Merlin (SRCE)</p><p class="oi-tool-desc">Sustav za e-učenje — kolegiji, materijali, kvizovi, ocjene, asinkrona nastava</p></div>
+    <div class="oi-tool"><div class="oi-tool-icon">🎓</div><p class="oi-tool-name">Google for Education+</p><p class="oi-tool-desc">Google Meet za sinkronu nastavu, Drive, Gmail i ostali Google alati</p></div>
+    <div class="oi-tool"><div class="oi-tool-icon">✨</div><p class="oi-tool-name">Gemini</p><p class="oi-tool-desc">Google AI asistent dostupan studentima i nastavnicima u sklopu Google Workspace</p></div>
+<div class="oi-tool"><div class="oi-tool-icon">🎓</div><p class="oi-tool-name">Studomat / ISVU</p><p class="oi-tool-desc">Evidencija studenata, kolegija, prijave i rezultati ispita</p></div>
+    <div class="oi-tool"><div class="oi-tool-icon">🌐</div><p class="oi-tool-name">Web FIPU / UNIPU</p><p class="oi-tool-desc">Sve službene informacije i dokumenti</p></div>
+  </div>
+</div>
+
+<!-- OBLICI NASTAVE -->
+<div class="oi-section">
+  <h2 class="oi-section-title">📡 Oblici nastave</h2>
+  <div class="oi-teaching">
+    <div class="oi-teaching-card">
+      <div class="oi-teaching-letter">P</div>
+      <p class="oi-teaching-name">Predavanja</p>
+      <span class="oi-teaching-badge">Sinkrono · Google Meet</span>
+      <p class="oi-teaching-desc">Termini objavljeni u kalendaru. <strong>Nije obvezno</strong> za online studente. Snimke mogu biti dostupne naknadno.</p>
+    </div>
+    <div class="oi-teaching-card">
+      <div class="oi-teaching-letter">V</div>
+      <p class="oi-teaching-name">Vježbe</p>
+      <span class="oi-teaching-badge">Sinkrono · Google Meet</span>
+      <p class="oi-teaching-desc">Termini objavljeni u kalendaru. <strong>Nije obvezno</strong> za online studente. Snimke mogu biti dostupne naknadno.</p>
+    </div>
+    <div class="oi-teaching-card">
+      <div class="oi-teaching-letter">A</div>
+      <p class="oi-teaching-name">Asinkrono</p>
+      <span class="oi-teaching-badge">Vlastiti tempo · Merlin</span>
+      <p class="oi-teaching-desc">Diskusije, materijali, konzultacije na forumu Merlina. Ključni dio online studija — <strong>self-paced</strong>.</p>
+    </div>
+  </div>
+
+  <details class="oi-accordion">
+    <summary><span>📋 Što znači notacija 9P · 6V · 45A?</span><span class="oi-acc-arrow">▶</span></summary>
+    <div class="oi-acc-body">
+      <p>Notacija <code>9P - 6V - 45A</code> na kolegiju znači:</p>
+      <ul>
+        <li><strong>9P:</strong> 9 sati sinkronih predavanja putem Google Meet-a (nisu obvezna, ali dostupna)</li>
+        <li><strong>6V:</strong> 6 sati sinkronih vježbi putem Google Meet-a (nisu obvezna, ali dostupna)</li>
+        <li><strong>45A:</strong> 45 sati asinkronih aktivnosti — diskusije, materijali, konzultacije, podrška projektima</li>
+      </ul>
+      <p>Isti kolegij na redovnom studiju ima opterećenje 30P - 30V. Ovakav pristup je uobičajen za izvanredne studije.</p>
+    </div>
+  </details>
+
+  <details class="oi-accordion">
+    <summary><span>📊 Primjer IPN tablice (izvedbeni plan nastave)</span><span class="oi-acc-arrow">▶</span></summary>
+    <div class="oi-acc-body">
+      <p>Svaki kolegij ima izvedbeni plan nastave (IPN) s ovom strukturom:</p>
+      <div style="overflow-x:auto;margin:10px 0">
+        <table class="oi-ipn-table">
+          <thead><tr><th>Aktivnost</th><th>Ishodi</th><th>Teme</th><th>Sati</th><th>ECTS</th><th>Udio ocjene</th></tr></thead>
+          <tbody>
+            <tr><td>Predavanja</td><td>1–5</td><td>1–12</td><td>60</td><td>2,0</td><td>0%</td></tr>
+            <tr><td>Vježbe</td><td>3–5</td><td>5–12</td><td>30</td><td>1,0</td><td>0%</td></tr>
+            <tr><td>Samostalni zadaci</td><td>1–5</td><td>1–12</td><td>15</td><td>0,5</td><td>10%</td></tr>
+            <tr><td>Projekt</td><td>3–5</td><td>5–12</td><td>15</td><td>0,5</td><td>40%</td></tr>
+            <tr><td>Završni ispit</td><td>1–5</td><td>1–12</td><td>60</td><td>2,0</td><td>50%</td></tr>
+            <tr><td><strong>Ukupno</strong></td><td>–</td><td>–</td><td><strong>180</strong></td><td><strong>6,0</strong></td><td><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="oi-formula">
+        <span class="oi-formula-label">Ocjena =</span>
+        <span class="oi-formula-part">Zadaci × 0,1</span>
+        <span class="oi-formula-op">+</span>
+        <span class="oi-formula-part">Projekt × 0,4</span>
+        <span class="oi-formula-op">+</span>
+        <span class="oi-formula-part">Ispit × 0,5</span>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- PRAVILA SINKRONE NASTAVE -->
+<div class="oi-section">
+  <h2 class="oi-section-title">📹 Pravila sinkrone nastave</h2>
+  <div class="oi-rules">
+    <div class="oi-rule"><span class="oi-rule-icon">🗓️</span><div><p class="oi-rule-title">Fleksibilnost prisustva</p><p class="oi-rule-desc">Prisustvo nije obvezno. Nastoj nas obavijestiti ako ne možeš doći, ali ne brinite ako to nije izvedivo.</p></div></div>
+    <div class="oi-rule"><span class="oi-rule-icon">⏰</span><div><p class="oi-rule-title">Pravovremenost</p><p class="oi-rule-desc">Dolazak na vrijeme odražava međusobno poštovanje i pomaže da iskoristimo zajedničko vrijeme maksimalno.</p></div></div>
+    <div class="oi-rule"><span class="oi-rule-icon">📷</span><div><p class="oi-rule-title">Kamera uključena</p><p class="oi-rule-desc">Potičemo da imaš kameru uključenu — pomaže u stvaranju osjećaja zajedništva i olakšava komunikaciju.</p></div></div>
+    <div class="oi-rule"><span class="oi-rule-icon">🎧</span><div><p class="oi-rule-title">Tehnička spremnost</p><p class="oi-rule-desc">Ispravno konfigurirane slušalice i mikrofon ključni su za fluidnu komunikaciju bez prekida.</p></div></div>
+    <div class="oi-rule"><span class="oi-rule-icon">🙋</span><div><p class="oi-rule-title">Aktivno sudjelovanje</p><p class="oi-rule-desc">Ohrabrujemo aktivno sudjelovanje — postavi pitanje, odgovori, komentiraj diskusiju.</p></div></div>
+    <div class="oi-rule"><span class="oi-rule-icon">🚫</span><div><p class="oi-rule-title">Bez snimanja</p><p class="oi-rule-desc">Snimanje nastave nije dopušteno radi zaštite privatnosti svih sudionika.</p></div></div>
+  </div>
+</div>
+
+<!-- MERLIN -->
+<div class="oi-section">
+  <h2 class="oi-section-title">📖 Asinkrona nastava — Merlin i Google</h2>
+  <details class="oi-accordion" open>
+    <summary><span>📚 Što sadrži kolegij na Merlinu?</span><span class="oi-acc-arrow">▶</span></summary>
+    <div class="oi-acc-body">
+      <p>Svaki e-kolegij na Merlinu sadrži minimalno:</p>
+      <ul>
+        <li>Osnovne informacije o nastavnicima s kontaktima</li>
+        <li>Kratak opis i ishodi učenja kolegija</li>
+        <li>Prihvaćeni izvedbeni plan predmeta (IPN)</li>
+        <li>Raspis po temama — video predavanja, materijali, primjeri testova</li>
+        <li>Neke oblike samoprocjene (online kvizovi, zbirka s rješenjima…)</li>
+        <li>Linkove na sve third-party resurse koji se koriste</li>
+      </ul>
+      <p>Prema posljednjoj procjeni, <strong>&gt;90% kolegija</strong> zadovoljava minimalne kriterije, a <strong>&gt;10%</strong> nudi iznimno naprednu razinu sadržaja.</p>
+    </div>
+  </details>
+</div>
+
+<!-- KONTAKT -->
+<div class="oi-section">
+  <h2 class="oi-section-title">📬 Kontakt</h2>
+  <div class="oi-contact">
+    <div class="oi-contact-icon">🏫</div>
+    <div>
+      <p class="oi-contact-title">Fakultet informatike u Puli</p>
+      <p class="oi-contact-info">
+        Sveučilište Jurja Dobrile u Puli, Ulica Alda Negrija 6, 52100 Pula<br>
+        📞 <a href="tel:+38552877438">+385 52 877 438</a><br>
+        ✉️ <a href="mailto:fipu-ured@unipu.hr">fipu-ured@unipu.hr</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.oi-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = btn.dataset.tab;
+      var targetId = btn.dataset.panel;
+      document.querySelectorAll('.oi-tab-btn[data-tab="' + group + '"]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.oi-tab-panel[data-group="' + group + '"]').forEach(function(p) { p.classList.remove('active'); });
+      var panel = document.getElementById(targetId);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // Checklist
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    el.querySelector('.oi-check-box').textContent = el.classList.contains('checked') ? '✓' : '';
+  }
+
+  // Quiz
+  var quizCurrent = 0;
+  var quizScore = 0;
+
+  function quizAnswer(yes) {
+    if (yes) quizScore++;
+    quizCurrent++;
+    document.getElementById('quiz-bar').style.width = (quizCurrent / 8 * 100) + '%';
+    var questions = document.querySelectorAll('.oi-quiz-question');
+    questions.forEach(function(q) { q.classList.remove('active'); });
+    if (quizCurrent < 8) {
+      questions[quizCurrent].classList.add('active');
+    } else {
+      var result = document.getElementById('quiz-result');
+      result.classList.add('active');
+      document.getElementById('quiz-score').textContent = quizScore + '/8';
+      var emoji, verdict;
+      if (quizScore >= 7) {
+        emoji = '🚀';
+        verdict = 'Idealan si kandidat za online studij! Imaš sve što je potrebno — samo se upiši.';
+      } else if (quizScore >= 5) {
+        emoji = '👍';
+        verdict = 'Dobra baza! Uz malo organizacije i pripremljenosti, online studij je pravo za tebe.';
+      } else if (quizScore >= 3) {
+        emoji = '💪';
+        verdict = 'Ima prostora za napredak. Razmisli što bi trebalo poboljšati prije upisa.';
+      } else {
+        emoji = '🤔';
+        verdict = 'Možda je redovni studij bolja opcija u ovom trenutku — ali s pripremom sve je moguće!';
+      }
+      document.getElementById('quiz-emoji').textContent = emoji;
+      document.getElementById('quiz-verdict').textContent = verdict;
+    }
+  }
+
+  function quizRestart() {
+    quizCurrent = 0;
+    quizScore = 0;
+    document.getElementById('quiz-bar').style.width = '0%';
+    document.getElementById('quiz-result').classList.remove('active');
+    var questions = document.querySelectorAll('.oi-quiz-question');
+    questions.forEach(function(q) { q.classList.remove('active'); });
+    questions[0].classList.add('active');
+  }
+
+  function openLightbox(src) {
+    var lb = document.getElementById('oi-lightbox');
+    lb.querySelector('img').src = src;
+    lb.classList.add('active');
+  }
+
+  function closeLightbox() {
+    var lb = document.getElementById('oi-lightbox');
+    lb.classList.remove('active');
+    lb.querySelector('img').src = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+<div class="oi-lightbox" id="oi-lightbox" onclick="closeLightbox()">
+  <span class="oi-lightbox-close" onclick="closeLightbox()">×</span>
+  <img src="" alt="">
+</div>

@@ -1,35 +1,43 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Stats from './components/Stats'
-import AboutFIPU from './components/AboutFIPU'
-import IsItForMe from './components/IsItForMe'
-import Benefits from './components/Benefits'
-import Programs from './components/Programs'
-import Journey from './components/Journey'
-import HowToStudy from './components/HowToStudy'
-import Tools from './components/Tools'
-import TechRequirements from './components/TechRequirements'
-import Enrollment from './components/Enrollment'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import TopNav from './components/TopNav'
+import HomeModule from './components/modules/HomeModule'
+import NastavaModule from './components/modules/NastavaModule'
+import PutovanjeModule from './components/modules/PutovanjeModule'
+import KvizModule from './components/modules/KvizModule'
+
+const VIEW_MAP = {
+  home: 'home', nastava: 'nastava', putovanje: 'putovanje', kviz: 'kviz',
+}
 
 export default function App() {
+  const [active, setActive] = useState('home')
+  const navigate = (id) => setActive(VIEW_MAP[id] || id)
+
+  const views = {
+    home:      <HomeModule onNavigate={navigate} />,
+    nastava:   <NastavaModule onNavigate={navigate} />,
+    putovanje: <PutovanjeModule onNavigate={navigate} />,
+    kviz:      <KvizModule onNavigate={navigate} />,
+  }
+
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Stats />
-      <AboutFIPU />
-      <IsItForMe />
-      <Benefits />
-      <Programs />
-      <Journey />
-      <HowToStudy />
-      <Tools />
-      <TechRequirements />
-      <Enrollment />
-      <Contact />
-      <Footer />
-    </>
+    <div className="app-shell">
+      <TopNav active={active} onNavigate={navigate} />
+      <main className="app-main">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            className="module-wrap"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+          >
+            {views[active]}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+    </div>
   )
 }
