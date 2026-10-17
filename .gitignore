@@ -1,0 +1,17 @@
+node_modules
+dist
+.DS_Store
+
+# Source document materials (too large for git)
+*.afpub
+FIPU-2026.pdf
+2026-07-21-FIPUIPN2627.pdf
+2024-09-smjernice-studenti.pdf
+FIPU-tech-stack-2026.pdf
+
+# Keep the downloadable vodič PDF in public/docs (tracked)
+# The source copy in the root is excluded:
+FIPU-vodic-za-studente-ONLINE-izvanredni-studij-informatike-3.pdf
+
+# Vite cache
+.vite
