@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
 
 const NAV_ITEMS = [
   { id: 'home',             label: 'O online studiju' },
@@ -33,7 +34,7 @@ export default function TopNav({ active, onNavigate }) {
             aria-label={menuOpen ? 'Zatvori izbornik' : 'Otvori izbornik'}
             aria-expanded={menuOpen}
           >
-            <span className="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
           <button className="nav-brand" onClick={() => handleNavigate('home')}>
             <img src="/images/fipu-hr.png" alt="FIPU" className="nav-brand-logo" />

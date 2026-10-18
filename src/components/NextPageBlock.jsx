@@ -1,3 +1,5 @@
+import { ArrowRight } from 'lucide-react'
+
 export default function NextPageBlock({ title, description, label, target, onNavigate }) {
   return (
     <section className="w-full py-space-xl mt-space-xl">
@@ -18,7 +20,7 @@ export default function NextPageBlock({ title, description, label, target, onNav
             className="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-emerald-accent text-on-primary hover:bg-forest-dark font-label-lg text-label-lg transition-all shadow-lg shrink-0 border-none cursor-pointer"
           >
             <span>{label}</span>
-            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            <ArrowRight size={18} />
           </button>
         </div>
       </div>

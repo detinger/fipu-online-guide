@@ -1,3 +1,5 @@
+import { Mail, Phone, MapPin } from 'lucide-react'
+
 export default function ContactFooter() {
   return (
     <footer className="w-full bg-surface py-space-xl">
@@ -18,14 +20,14 @@ export default function ContactFooter() {
                   href="mailto:fipu-ured@unipu.hr"
                   className="flex items-center gap-space-xs text-on-primary hover:text-secondary-fixed transition-colors no-underline"
                 >
-                  <span className="material-symbols-outlined text-secondary-fixed text-[20px]">mail</span>
+                  <Mail size={20} className="text-secondary-fixed shrink-0" />
                   <span>fipu-ured@unipu.hr</span>
                 </a>
                 <a
                   href="tel:+38552877438"
                   className="flex items-center gap-space-xs text-on-primary hover:text-fipu-cyan transition-colors no-underline"
                 >
-                  <span className="material-symbols-outlined text-fipu-cyan text-[20px]">call</span>
+                  <Phone size={20} className="text-fipu-cyan shrink-0" />
                   <span>+385 52 877 438</span>
                 </a>
                 <a
@@ -34,7 +36,7 @@ export default function ContactFooter() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-space-xs text-on-primary hover:text-secondary-fixed transition-colors no-underline"
                 >
-                  <span className="material-symbols-outlined text-secondary-fixed text-[20px]">location_on</span>
+                  <MapPin size={20} className="text-secondary-fixed shrink-0" />
                   <span>Ulica Alda Negrija 6, Pula</span>
                 </a>
               </div>
