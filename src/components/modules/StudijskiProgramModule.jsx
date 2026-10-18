@@ -77,20 +77,36 @@ export default function StudijskiProgramModule({ onNavigate }) {
 
       {/* HERO */}
       <section className="w-full px-margin py-space-xl">
-        <div className="max-w-[1240px] mx-auto flex flex-col gap-space-lg">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-            <div className="space-y-space-xs max-w-2xl">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+            <div className="lg:col-span-7 space-y-space-md">
               <h1 className="font-headline-lg text-headline-lg md:text-display-hero text-on-surface tracking-tight">
                 Studijski programi FIPU
               </h1>
               <p className="font-body-lg text-body-lg text-on-surface-variant">
                 Online sveučilišni studij informatike u tri razine. Sve informacije o uvjetima upisa, ishodima učenja, nastavnim planovima i akademskim uslugama na jednom mjestu.
               </p>
+              <div className="flex flex-wrap gap-space-sm">
+                <span className="px-space-md py-space-xs rounded-full bg-surface-mint text-forest-dark font-badge-caps text-badge-caps uppercase">3 programa</span>
+                <span className="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-badge-caps text-badge-caps uppercase">180 + 120 ECTS</span>
+                <span className="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-badge-caps text-badge-caps uppercase">Online izvanredni</span>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-space-sm shrink-0">
-              <span className="px-space-md py-space-xs rounded-full bg-surface-mint text-forest-dark font-badge-caps text-badge-caps uppercase">3 programa</span>
-              <span className="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-badge-caps text-badge-caps uppercase">180 + 120 ECTS</span>
-              <span className="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-badge-caps text-badge-caps uppercase">Online izvanredni</span>
+            <div className="lg:col-span-5 hidden lg:block">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl h-[340px]">
+                <img
+                  src="/images/research-lab.jpg"
+                  alt="Student FIPU-a na laboratorijskim vježbama izrađuje BCI prototip s elektroničkim komponentama"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 15%' }}
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block px-space-xs py-0.5 rounded bg-fipu-cyan text-primary-container font-badge-caps text-badge-caps uppercase">FIPUlab</span>
+                  <p className="font-title-card text-title-card text-on-primary mt-0.5">Praktični rad i istraživanje</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

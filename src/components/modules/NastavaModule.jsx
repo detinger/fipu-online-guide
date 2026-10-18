@@ -204,6 +204,29 @@ export default function NastavaModule({ onNavigate }) {
         </div>
       </section>
 
+      {/* PHOTO STRIP — LAB VJEŽBE */}
+      <section className="w-full relative overflow-hidden h-[400px] md:h-[520px]">
+        <img
+          src="/images/pula-coastal.jpg"
+          alt="Pogled na obalu Pule s kristalno čistim Jadranskim morem — mediteransko okruženje online studija"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: 'center 40%' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-container/65 via-primary-container/25 to-transparent" />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-[1240px] mx-auto px-margin">
+            <span className="font-badge-caps text-badge-caps text-fipu-cyan uppercase">Online studij · Pula, Istra</span>
+            <p className="font-headline-lg text-headline-lg text-on-primary mt-space-xs max-w-xl">
+              Uči na daljinu, živi uz Jadransko more
+            </p>
+            <p className="font-body-md text-body-md text-inverse-primary mt-space-xs max-w-md">
+              Akreditirani online program smješten u mediteranskom gradu Puli — savršena kombinacija kvalitetnog studija i životnog stila.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 2: IPN TABLE + GRADE CALCULATOR */}
       <section className="w-full px-margin py-space-xl">
         <div className="max-w-[1240px] mx-auto space-y-space-xl">

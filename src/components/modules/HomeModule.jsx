@@ -338,21 +338,33 @@ export default function HomeModule({ onNavigate }) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-space-md">
             <div className="md:col-span-7 group relative rounded-2xl overflow-hidden shadow-sm h-80 md:h-96">
-              <img alt="Sveučilišni kampus u Puli" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="/images/campus-aerial.jpg" />
+              <img
+                alt="Pogled iz zraka na Pulu s rimskom Arenom u prvom planu i lukom u pozadini"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                src="/images/pula-aerial2.jpg"
+                style={{ objectPosition: 'center 30%' }}
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-primary-container/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
-                <span className="px-space-xs py-0.5 rounded bg-surface-mint text-forest-dark font-badge-caps text-badge-caps uppercase">Infrastruktura</span>
-                <h3 className="font-headline-md text-headline-md text-on-primary mt-1">Sveučilišni kampus u Puli</h3>
-                <p className="font-body-sm text-body-sm text-surface-variant mt-0.5">Moderni laboratoriji, studentski dom, knjižnica i istraživački centri FIPU-a.</p>
+                <span className="px-space-xs py-0.5 rounded bg-surface-mint text-forest-dark font-badge-caps text-badge-caps uppercase">Akademski grad</span>
+                <h3 className="font-headline-md text-headline-md text-on-primary mt-1">Pula — tisućljetni mediteranski grad</h3>
+                <p className="font-body-sm text-body-sm text-surface-variant mt-0.5">Rimska arena, sveučilišni kampus i moderni IT centar u jednom.</p>
               </div>
             </div>
             <div className="md:col-span-5 group relative rounded-2xl overflow-hidden shadow-sm h-80 md:h-96">
-              <img alt="Pula i mediteranska obala" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="/images/pula-coastal.jpg" />
+              <img
+                alt="Kristalno čisto more i uvala istarskog poluotoka snimljeni dronom"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                src="/assets/extracted/vodic-015.jpg"
+                style={{ objectPosition: 'center center' }}
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-primary-container/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
-                <span className="px-space-xs py-0.5 rounded bg-fipu-cyan text-primary-container font-badge-caps text-badge-caps uppercase">Okruženje</span>
-                <h3 className="font-headline-md text-headline-md text-on-primary mt-1">Pula i mediteranska obala</h3>
-                <p className="font-body-sm text-body-sm text-surface-variant mt-0.5">Savršena sinergija inspirativne prirode i akademske izvrsnosti.</p>
+                <span className="px-space-xs py-0.5 rounded bg-fipu-cyan text-primary-container font-badge-caps text-badge-caps uppercase">Priroda & Okruženje</span>
+                <h3 className="font-headline-md text-headline-md text-on-primary mt-1">Istarsko more i mediteranska priroda</h3>
+                <p className="font-body-sm text-body-sm text-surface-variant mt-0.5">Savršena inspiracija za studente iz čitave Hrvatske i dijaspore.</p>
               </div>
             </div>
           </div>

@@ -359,6 +359,28 @@ export default function PutovanjeModule({ onNavigate }) {
         </div>
       </section>
 
+      {/* PHOTO BANNER — STUDENTSKO ISKUSTVO */}
+      <section className="w-full relative overflow-hidden h-[260px] md:h-[320px]">
+        <img
+          src="/assets/extracted/vodic-031.jpg"
+          alt="Troje studenata FIPU Online surađuje na laptopima i tabletu uz Jadransko more"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: 'center 25%' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-container/70 via-primary-container/30 to-transparent" />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-[1240px] mx-auto px-margin">
+            <p className="font-display-hero text-display-hero text-on-primary max-w-lg leading-tight">
+              Studij koji se uklapa u <span className="text-fipu-cyan">tvoj životni stil</span>
+            </p>
+            <p className="font-body-lg text-body-lg text-inverse-primary mt-space-xs max-w-md">
+              Uči uz posao, obitelj ili avanturu — od kuće, kafića ili uz Jadransko more.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* COMPLETE LIFECYCLE OVERVIEW */}
       <section className="w-full bg-surface-container-low py-space-xl">
         <div className="max-w-[1240px] mx-auto px-margin">

@@ -148,8 +148,10 @@ export default function KvizModule() {
               <div className="relative w-full h-[320px] rounded-xl overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
-                  alt="Student informatike pri studiranju"
-                  src="/images/study-writing.jpg"
+                  alt="Studenti FIPU Online studiraju s laptopima na kamenim stijenama uz Jadransko more"
+                  src="/assets/extracted/vodic-012.jpg"
+                  style={{ objectPosition: 'center 30%' }}
+                  loading="lazy"
                 />
               </div>
               <div className="grid grid-cols-3 gap-space-xs pt-space-sm text-center">
