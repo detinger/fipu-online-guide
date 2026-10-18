@@ -103,6 +103,8 @@ vodic-online/
 └── package.json
 ```
 
+> Mape `TEMP/` i `SPLASH/` isključene su iz repozitorija (.gitignore) — sadrže izvornu referentnu građu i promo materijale koji nisu dio web aplikacije.
+
 ---
 
 ## Četiri modula
@@ -112,7 +114,7 @@ vodic-online/
 | `HomeModule` | O online studiju | Hero sekcija, stats bar, prednosti online učenja, usporedna tablica, CTA prema Hodogramu |
 | `PutovanjeModule` | Hodogram studija | 4-tab navigator (Upis / Studij & Učenje / Ispiti / Referada), lightbox za procesne dijagrame |
 | `NastavaModule` | Organizacija nastave | IPN tablica, ECTS kalkulator (3 klizača), ponašanje na nastavi, alati i platforma |
-| `KvizModule` | Samoprocjena | 3-tab kontrolna lista (Hardver / Softver / Navike), 8-pitanjski kviz, accordion FAQ s pretragom |
+| `KvizModule` | Samoprocjena | 3-tab kontrolna lista (Hardver / Softver / Digitalne vještine), 8-pitanjski kviz, accordion FAQ s pretragom |
 
 ---
 

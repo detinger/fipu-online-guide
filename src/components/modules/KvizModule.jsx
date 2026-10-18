@@ -379,66 +379,32 @@ export default function KvizModule() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
-            {/* FAQ list */}
-            <div className="lg:col-span-8 space-y-space-sm">
-              {filteredFaq.length === 0 && (
-                <div className="text-on-surface-variant font-body-md text-body-md py-space-lg text-center">
-                  Nema rezultata za "{faqSearch}"
-                </div>
-              )}
-              {filteredFaq.map((f, i) => {
-                const realIndex = FAQ_ITEMS.indexOf(f)
-                const isOpen = openFaq === realIndex
-                return (
-                  <div key={realIndex} className={`bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-colors ${isOpen ? 'bg-surface-mint/30' : ''}`}>
-                    <button
-                      className="w-full flex items-center justify-between text-left gap-space-md"
-                      onClick={() => setOpenFaq(isOpen ? null : realIndex)}
-                    >
-                      <span className="font-title-card text-title-card text-on-surface">{f.q}</span>
-                      <span className={`material-symbols-outlined text-outline-variant transition-transform ${isOpen ? 'rotate-180' : ''}`}>expand_more</span>
-                    </button>
-                    {isOpen && (
-                      <div className="pt-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                        {f.a}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* Contact sidebar */}
-            <div className="lg:col-span-4 bg-surface-container-lowest p-space-lg rounded-3xl shadow-md space-y-space-md">
-              <div className="space-y-space-xs">
-                <h3 className="font-headline-md text-headline-md text-on-surface">Trebate izravnu pomoć?</h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">
-                  Naš ured i koordinatori online studija stoje vam na raspolaganju za sva administrativna pitanja.
-                </p>
+          <div className="space-y-space-sm">
+            {filteredFaq.length === 0 && (
+              <div className="text-on-surface-variant font-body-md text-body-md py-space-lg text-center">
+                Nema rezultata za "{faqSearch}"
               </div>
-              <div className="space-y-space-sm pt-space-xs">
-                {[
-                  { icon: 'location_on', color: 'text-forest-dark', label: 'Fakultet informatike u Puli', sub: 'Ulica Alda Negrija 6, 52100 Pula, Hrvatska' },
-                  { icon: 'call', color: 'text-unipu-blue', label: 'Telefon ureda', sub: '+385 52 877 438' },
-                  { icon: 'mail', color: 'text-forest-dark', label: 'Službeni e-mail', sub: 'fipu-ured@unipu.hr', href: 'mailto:fipu-ured@unipu.hr' },
-                  { icon: 'schedule', color: 'text-outline', label: 'Uredovno radno vrijeme', sub: 'Pon – Pet: 09:00 – 14:00 sati' },
-                ].map((c, i) => (
-                  <div key={i} className="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-low">
-                    <span className={`material-symbols-outlined ${c.color} text-[22px] mt-0.5`}>{c.icon}</span>
-                    <div>
-                      <span className="font-label-md text-label-md text-on-surface block">{c.label}</span>
-                      {c.href
-                        ? <a className="font-body-sm text-body-sm text-unipu-blue hover:underline" href={c.href}>{c.sub}</a>
-                        : <span className="font-body-sm text-body-sm text-on-surface-variant">{c.sub}</span>
-                      }
+            )}
+            {filteredFaq.map((f, i) => {
+              const realIndex = FAQ_ITEMS.indexOf(f)
+              const isOpen = openFaq === realIndex
+              return (
+                <div key={realIndex} className={`bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-colors ${isOpen ? 'bg-surface-mint/30' : ''}`}>
+                  <button
+                    className="w-full flex items-center justify-between text-left gap-space-md"
+                    onClick={() => setOpenFaq(isOpen ? null : realIndex)}
+                  >
+                    <span className="font-title-card text-title-card text-on-surface">{f.q}</span>
+                    <span className={`material-symbols-outlined text-outline-variant transition-transform ${isOpen ? 'rotate-180' : ''}`}>expand_more</span>
+                  </button>
+                  {isOpen && (
+                    <div className="pt-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                      {f.a}
                     </div>
-                  </div>
-                ))}
-              </div>
-              <div className="pt-space-xs">
-              </div>
-            </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
