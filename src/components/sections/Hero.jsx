@@ -1,8 +1,33 @@
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 const words = ['Studij.', 'Posao.', 'Život.', 'Sve zajedno.']
 
 export default function Hero({ onNavigate }) {
+  const badgeRef = useRef(null)
+
+  useEffect(() => {
+    const el = badgeRef.current
+    if (!el) return
+    const entry = el.animate(
+      [
+        { opacity: 0, transform: 'translateY(-20px)' },
+        { opacity: 1, transform: 'translateY(0px)' },
+      ],
+      { duration: 600, delay: 200, fill: 'forwards', easing: 'ease-out' }
+    )
+    entry.onfinish = () => {
+      el.animate(
+        [
+          { transform: 'translateY(0px)' },
+          { transform: 'translateY(-12px)' },
+          { transform: 'translateY(0px)' },
+        ],
+        { duration: 1400, iterations: Infinity, easing: 'ease-in-out' }
+      )
+    }
+  }, [])
+
   return (
     <section id="hero" className="full-section hero-section">
       <div className="hero-bg">
@@ -11,15 +36,10 @@ export default function Hero({ onNavigate }) {
       </div>
 
       <div className="hero-content">
-        <motion.div
-          className="hero-badge"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
+        <div className="hero-badge" ref={badgeRef} style={{ opacity: 0 }}>
           <img src="/favicon.svg" alt="FIPU" className="hero-logo" />
           <span>Fakultet informatike u Puli</span>
-        </motion.div>
+        </div>
 
         <motion.h1
           className="hero-title"

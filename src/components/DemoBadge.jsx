@@ -7,30 +7,35 @@ export default function DemoBadge() {
     <div style={{ position: 'fixed', top: 36, right: 24, zIndex: 1000 }}>
       {/* Collapsed circle */}
       {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          title="Ogledni demo kolegij"
-          style={{
-            width: 100, height: 100, borderRadius: '50%',
-            background: 'var(--navy)',
-            border: '3px solid var(--fipu-cyan)',
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center', gap: 2,
-            cursor: 'pointer', boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
-            color: 'var(--fipu-cyan)', textAlign: 'center',
-            fontSize: '0.65rem', fontWeight: 800, lineHeight: 1.25,
-            textTransform: 'uppercase', letterSpacing: '0.04em',
-            transform: 'rotate(-6deg)',
-            transition: 'transform 0.2s, box-shadow 0.2s',
-            padding: 0,
-          }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'rotate(-6deg) scale(1.08)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(0,0,0,0.45)' }}
-          onMouseLeave={e => { e.currentTarget.style.transform = 'rotate(-6deg)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.35)' }}
-        >
+        <>
+          <style>{`
+            @keyframes demoBounce {
+              0%, 100% { transform: rotate(-6deg) scale(1); }
+              50%       { transform: rotate(-6deg) scale(1.12); }
+            }
+          `}</style>
+          <button
+            onClick={() => setOpen(true)}
+            title="Ogledni demo kolegij"
+            style={{
+              width: 116, height: 116, borderRadius: '50%',
+              background: 'var(--navy)',
+              border: '3px solid var(--fipu-cyan)',
+              display: 'flex', flexDirection: 'column',
+              alignItems: 'center', justifyContent: 'center', gap: 2,
+              cursor: 'pointer', boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
+              color: 'var(--fipu-cyan)', textAlign: 'center',
+              fontSize: '0.68rem', fontWeight: 800, lineHeight: 1.25,
+              textTransform: 'uppercase', letterSpacing: '0.04em',
+              animation: 'demoBounce 1.6s ease-in-out infinite',
+              padding: 0,
+            }}
+          >
           <span style={{ fontSize: '1.7rem', lineHeight: 1 }}>🎓</span>
           <span>Demo</span>
           <span>Kolegij</span>
         </button>
+        </>
       )}
 
       {/* Expanded card */}

@@ -209,8 +209,8 @@ h1, h2, h3, h4, h5,
 .hero-badge {
   display: inline-flex; align-items: center; gap: 6px;
   background: rgba(129,249,194,0.15); color: var(--secondary-fixed);
-  font-size: 0.65rem; font-weight: 800;
-  padding: 4px 12px; border-radius: 9999px;
+  font-size: 0.85rem; font-weight: 800;
+  padding: 8px 20px; border-radius: 9999px;
   text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 16px;
 }
 .hero-title {
