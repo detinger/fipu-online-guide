@@ -1,11 +1,21 @@
+import { useState } from 'react'
+
 const NAV_ITEMS = [
-  { id: 'home',      label: 'O online studiju' },
-  { id: 'putovanje', label: 'Hodogram studija' },
-  { id: 'nastava',   label: 'Organizacija nastave' },
-  { id: 'kviz',      label: 'Samoprocjena' },
+  { id: 'home',             label: 'O online studiju' },
+  { id: 'putovanje',        label: 'Hodogram studija' },
+  { id: 'nastava',          label: 'Organizacija nastave' },
+  { id: 'studijskiprogram', label: 'Studijski program' },
+  { id: 'kviz',             label: 'Samoprocjena' },
 ]
 
 export default function TopNav({ active, onNavigate }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleNavigate = (id) => {
+    onNavigate(id)
+    setMenuOpen(false)
+  }
+
   return (
     <header className="top-nav">
       <div className="top-nav-topbar">
@@ -16,9 +26,19 @@ export default function TopNav({ active, onNavigate }) {
         </div>
       </div>
       <div className="top-nav-main">
-        <button className="nav-brand" onClick={() => onNavigate('home')}>
-          <img src="/images/fipu-hr.png" alt="FIPU" className="nav-brand-logo" />
-        </button>
+        <div className="nav-left-group">
+          <button
+            className="nav-hamburger"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? 'Zatvori izbornik' : 'Otvori izbornik'}
+            aria-expanded={menuOpen}
+          >
+            <span className="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
+          </button>
+          <button className="nav-brand" onClick={() => handleNavigate('home')}>
+            <img src="/images/fipu-hr.png" alt="FIPU" className="nav-brand-logo" />
+          </button>
+        </div>
 
         <nav className="nav-pill-container">
           {NAV_ITEMS.map(item => (
@@ -31,8 +51,21 @@ export default function TopNav({ active, onNavigate }) {
             </button>
           ))}
         </nav>
-
       </div>
+
+      {menuOpen && (
+        <nav className="nav-mobile-menu" aria-label="Mobilni izbornik">
+          {NAV_ITEMS.map(item => (
+            <button
+              key={item.id}
+              className={`nav-mobile-item${active === item.id ? ' active' : ''}`}
+              onClick={() => handleNavigate(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </nav>
+      )}
     </header>
   )
 }

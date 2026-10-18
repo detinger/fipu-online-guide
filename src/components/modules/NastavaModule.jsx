@@ -462,10 +462,10 @@ export default function NastavaModule({ onNavigate }) {
         </div>
       </section>
       <NextPageBlock
-        title="Provjeri jesi li spreman za online studij"
-        description="Kratki interaktivni upitnik o tehničkoj opremljenosti, digitalnoj zrelosti i samodisciplini."
-        label="Pokreni samoprocjenu"
-        target="kviz"
+        title="Studijski programi, uvjeti upisa i nastavni planovi"
+        description="Pregled sva tri online studijska programa s ishodima učenja, cijenama i kolegijima po semestrima."
+        label="Studijski program"
+        target="studijskiprogram"
         onNavigate={onNavigate}
       />
     </div>

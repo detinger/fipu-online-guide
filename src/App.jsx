@@ -5,10 +5,11 @@ import DemoBadge from './components/DemoBadge'
 import HomeModule from './components/modules/HomeModule'
 import NastavaModule from './components/modules/NastavaModule'
 import PutovanjeModule from './components/modules/PutovanjeModule'
+import StudijskiProgramModule from './components/modules/StudijskiProgramModule'
 import KvizModule from './components/modules/KvizModule'
 
 const VIEW_MAP = {
-  home: 'home', nastava: 'nastava', putovanje: 'putovanje', kviz: 'kviz',
+  home: 'home', nastava: 'nastava', putovanje: 'putovanje', studijskiprogram: 'studijskiprogram', kviz: 'kviz',
 }
 
 export default function App() {
@@ -20,9 +21,10 @@ export default function App() {
 
   const views = {
     home:      <HomeModule onNavigate={navigate} />,
-    nastava:   <NastavaModule onNavigate={navigate} />,
-    putovanje: <PutovanjeModule onNavigate={navigate} />,
-    kviz:      <KvizModule onNavigate={navigate} />,
+    nastava:          <NastavaModule onNavigate={navigate} />,
+    putovanje:        <PutovanjeModule onNavigate={navigate} />,
+    studijskiprogram: <StudijskiProgramModule onNavigate={navigate} />,
+    kviz:             <KvizModule onNavigate={navigate} />,
   }
 
   return (

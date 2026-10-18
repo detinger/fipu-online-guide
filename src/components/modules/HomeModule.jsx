@@ -4,53 +4,49 @@ export default function HomeModule({ onNavigate }) {
   return (
     <div className="flex flex-col w-full">
       {/* HERO SECTION */}
-      <section className="relative w-full overflow-hidden bg-primary-container text-on-primary py-space-xl">
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-fipu-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-emerald-accent/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="max-w-[1240px] mx-auto px-margin-mobile md:px-margin relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
-            {/* Hero Text & Metrics */}
+      <section
+        className="relative w-full overflow-hidden min-h-[400px] md:min-h-[440px] flex items-stretch text-on-primary"
+        style={{ backgroundImage: 'url(/images/splash.png)', backgroundSize: 'cover', backgroundPosition: 'center 40%' }}
+      >
+        {/* Gradient overlay — keeps text readable at all breakpoints */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-container/75 via-primary-container/40 to-transparent pointer-events-none" />
+        <div className="relative z-10 w-full max-w-[1240px] mx-auto px-margin-mobile md:px-margin py-space-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
             <div className="lg:col-span-7 flex flex-col space-y-space-md">
               <h1 className="font-display-hero text-display-hero text-on-primary tracking-tight leading-tight">
                 Online sveučilišni studij <span className="text-fipu-cyan">Informatike</span> na FIPU
               </h1>
-              <p className="font-body-lg text-body-lg text-inverse-primary max-w-2xl leading-relaxed">
-                Akreditirani sveučilišni program Sveučilišta Jurja Dobrile u Puli krojen za novu generaciju softverskih inženjera, zaposlene profesionalce i studente na daljinu. Vrhunski standardi mentorstva, fleksibilan tempo i cjelovita digitalna podrška.
+              <p className="font-body-lg text-body-lg text-inverse-primary max-w-xl leading-relaxed">
+                Akreditirani sveučilišni program Sveučilišta Jurja Dobrile u Puli krojen za novu generaciju softverskih inženjera, zaposlene profesionalce i studente na daljinu.
+              </p>
+              <p className="font-body-md text-body-md text-surface-variant/90">
+                Vrhunski standardi mentorstva, fleksibilan tempo i cjelovita digitalna podrška.
               </p>
               {/* Hero Metrics Bento */}
-              <div className="grid grid-cols-3 gap-space-sm pt-space-md">
-                <div className="p-space-md rounded-xl bg-surface-container-highest/10 backdrop-blur-md shadow-sm">
-                  <span className="font-badge-caps text-badge-caps text-secondary-fixed uppercase">Modalitet studiranja</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-space-sm pt-space-md">
+                <div className="p-space-md rounded-xl bg-black/20 backdrop-blur-md shadow-sm">
+                  <div className="flex items-center gap-space-xs mb-1">
+                    <span className="material-symbols-outlined text-secondary-fixed text-[16px]">tune</span>
+                    <span className="font-badge-caps text-badge-caps text-secondary-fixed uppercase">Modalitet studiranja</span>
+                  </div>
                   <p className="font-headline-md text-headline-md text-on-primary mt-1">Self-paced</p>
                   <p className="font-body-sm text-body-sm text-surface-variant/80">Vlastiti tempo učenja i mentorska podrška</p>
                 </div>
-                <div className="p-space-md rounded-xl bg-surface-container-highest/10 backdrop-blur-md shadow-sm">
-                  <span className="font-badge-caps text-badge-caps text-fipu-cyan uppercase">ECTS bodovi</span>
+                <div className="p-space-md rounded-xl bg-black/20 backdrop-blur-md shadow-sm">
+                  <div className="flex items-center gap-space-xs mb-1">
+                    <span className="material-symbols-outlined text-fipu-cyan text-[16px]">school</span>
+                    <span className="font-badge-caps text-badge-caps text-fipu-cyan uppercase">ECTS bodovi</span>
+                  </div>
                   <p className="font-headline-md text-headline-md text-on-primary mt-1">180 + 120</p>
                   <p className="font-body-sm text-body-sm text-surface-variant/80">Prijediplomski + diplomski stupanj</p>
                 </div>
-                <div className="p-space-md rounded-xl bg-surface-container-highest/10 backdrop-blur-md shadow-sm">
-                  <span className="font-badge-caps text-badge-caps text-secondary-fixed uppercase">Akreditacija</span>
+                <div className="p-space-md rounded-xl bg-black/20 backdrop-blur-md shadow-sm">
+                  <div className="flex items-center gap-space-xs mb-1">
+                    <span className="material-symbols-outlined text-secondary-fixed text-[16px]">military_tech</span>
+                    <span className="font-badge-caps text-badge-caps text-secondary-fixed uppercase">Akreditacija</span>
+                  </div>
                   <p className="font-headline-md text-headline-md text-on-primary mt-1">#1</p>
                   <p className="font-body-sm text-body-sm text-surface-variant/80">Sveučilišni izvanredni online studij u HR</p>
-                </div>
-              </div>
-            </div>
-            {/* Visual Hero Showcase Card */}
-            <div className="lg:col-span-5 relative">
-              <div className="p-space-md rounded-2xl bg-surface-container-highest/15 backdrop-blur-xl shadow-2xl relative">
-                <div className="relative w-full h-80 rounded-xl overflow-hidden bg-primary-container shadow-inner">
-                  <img
-                    className="w-full h-full object-cover"
-                    src="/images/hero-student-sea.jpg"
-                    alt="Student FIPU Online"
-                    style={{ objectPosition: 'center 25%' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-container/90 via-primary-container/20 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block px-space-xs py-0.5 rounded bg-fipu-cyan text-primary-container font-badge-caps text-badge-caps uppercase">Potpuno online</span>
-                    <p className="font-title-card text-title-card text-on-primary mt-0.5">Merlin LMS i Google for Education Plus</p>
-                  </div>
                 </div>
               </div>
             </div>
